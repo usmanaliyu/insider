@@ -36,7 +36,7 @@
                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                 {% endthumbnail %}
                                   <div class="magnifier">
-                                       <a href="{% url 'detail' Article.id %}" title=""><i class="flaticon-add"></i></a>
+                                       <a href="{% url 'detail' Article.slug %}" title=""><i class="flaticon-add"></i></a>
                                   </div>
                               </div><!-- end image-wrap -->
 
@@ -49,7 +49,7 @@
                                             </div><!-- end blog-meta -->
 
                                             <div class="blog-desc-big">
-                                                <h1></h1> <a href="{% url 'detail' Article.id %}" class="lead">{{ Article.title}}</a></h1>
+                                                <h1></h1> <a href="{% url 'detail' Article.slug %}" class="lead">{{ Article.title}}</a></h1>
                                                     <p>
                                                     {{ Article.summary }}
                                                     </p>

@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,HttpResponse
 from django.contrib.contenttypes.models import ContentType
 from . models import Listing, Listing_category
 from Article.models import Article, Category
@@ -7,8 +7,11 @@ from comments.models import Comment
 from taggit.models import Tag
 from . choices import country_choice
 from django.core.paginator import Paginator
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.conf import settings
 import redis
@@ -143,16 +146,54 @@ def listing_search(request):
 
 
 
-class listcreate(CreateView):
+class listcreate(LoginRequiredMixin,CreateView):
     model = Listing
-    fields = ['logo','company_name','segment','description','tags','phone_number','email','street','city','country']
+    fields = ['logo','company_name','segment','description','motto','tags','phone_number','email','street','city','country']
     template_name = 'listing/create.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+
+
         return super().form_valid(form)
 
-    success_url = '../'
+
+    success_url = 'account/profile'
+
+
+
+class listupdate(LoginRequiredMixin,UpdateView):
+    model = Listing
+    fields = ['logo','company_name','segment','description','motto','tags','phone_number','email','street','city','country']
+    template_name = 'listing/update.html'
+
+
+    def form_valid(self, form):
+        if form.instance.user == self.request.user:
+            return super().form_valid(form)
+        else:
+            raise PermissionDenied
+
+
+
+    success_url = '../account/profile'
+
+
+class listdelete(LoginRequiredMixin,DeleteView):
+    model = Listing
+    fields = ['logo','company_name','segment','description','motto','tags','phone_number','email','street','city','country']
+    template_name = 'listing/delete.html'
+
+
+    def form_valid(self, form):
+        if form.instance.user == self.request.user:
+            return super().form_valid(form)
+        else:
+            raise PermissionDenied
+
+
+
+    success_url = '../account/profile'
 
 
 
@@ -177,3 +218,5 @@ def listtag(request, tags_slug):
 
                }
     return render(request, 'listing/list_tag.html',context)
+
+

@@ -8,5 +8,8 @@ urlpatterns = [
     path('<str:listing_slug>/',views.listing_detail, name='listing_detail'),
     path('listings',views.list_home, name="listing_home"),
     path('createform', views.listcreate.as_view(), name='list_create'),
+    path('<str:slug>/update', views.listupdate.as_view(), name='list_update'),
+    path('<str:slug>/delete', views.listdelete.as_view(), name='list_delete'),
     path('products/<str:tags_slug>/', views.listtag, name='list_tag'),
+
 ]

@@ -74,6 +74,8 @@
                                                     {{ Listing.description|truncatechars:200 }}
                                                     </p>
                                                 <p>{{Listing.comments.count}} Review{{Listing.comments.count|pluralize}}</p>
+                                                <p><a href="{% url 'list_update' Listing.slug %}">update</a> </p>
+                                                <p><a href="{% url 'list_delete' Listing.slug %}">Delete</a> </p>
 
 
                                             </div><!-- end desc -->
