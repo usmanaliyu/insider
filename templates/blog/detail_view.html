@@ -25,7 +25,7 @@
                                         <h3 >{{ instance.title }}</h3>
                                         <ul class="list-inline">
                                             <li>{{ instance.pub_date}}</li>
-                                            <li><span>{{ total_views }} view{{ total_views|pluralize }}</span> </li>
+
                                         </ul>
                                     </div><!-- end blog-meta -->
 
@@ -320,11 +320,7 @@
 {% endif %}
 
 
-                                        {% if instance.link %}
-                                    <h3><span>sources</span></h3>
 
-                                        <li><a href="{{ instance.link }}">{{ instance.link_name }}</a> </li>
-                                        {% endif %}
 
 
 
@@ -346,6 +342,15 @@
 
                                             </ul>
                                         </div><!-- end list-widget -->
+                                        {% endif %}
+
+
+                                          {% if instance.link %}
+                                    <h3><span>Sources</span></h3>
+                                        <ul>
+
+                                        <li>{{ instance.link_name }}</li>
+                                            </ul>
                                         {% endif %}
 
                                     </div><!-- end desc -->

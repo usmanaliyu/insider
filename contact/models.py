@@ -13,7 +13,7 @@ class Contact(models.Model):
         return self.name
 
 class Subscribe(models.Model):
-    email = models.EmailField(max_length=200)
+    S_email = models.EmailField(max_length=200)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

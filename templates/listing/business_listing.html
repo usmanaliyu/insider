@@ -13,18 +13,21 @@ All Businesses
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>Startups</h3>
-                            <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Edulogy</a></li>
-                                <li class="active">Startups</li>
-                            </ul>
+                            <h3> <bold>Startups</bold></h3>
+
                              <div class="newsletter-widget" align="center">
 
                                 <form class="form-inline" role="search" action="{% url 'listing_search' %}">
                                     <div class="form-1">
-                                        <input type="text" class=" form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
 
-                                        <div class="btn btn-primary ">
+                                        <div class="custom-box ">
+                                     <input class="custom-txt" type="text" name="Keywords" placeholder="Type to search">
+                                     <a class="custom-btn" href="#">
+                                         <i class="fa fa-search"></i>
+                                     </a>
+                                 </div><hr class="invisible"><br>
+
+
                                             <select class="btn btn-primary" name="country">
                                             <option selected="True" disabled="disabled">Country (All)</option>
                                                 {% for key,value in country_choice.items %}
@@ -33,11 +36,30 @@ All Businesses
 
                                                 {% endfor %}
                                          </select>
-                                        </div>
+                                        <select class="btn btn-primary custom-color" name="country">
+                                            <option selected="True" disabled="disabled">Country (All)</option>
+                                                {% for key,value in country_choice.items %}
+
+                                                <option value="{{ key }}">{{ value }}</option>
+
+                                                {% endfor %}
+                                         </select>
+
                                     </div>
                                 </form>
 
-                            </div><!-- end newsletter -->
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -63,10 +85,10 @@ All Businesses
                     <div class="row blog-grid shop-grid">
 
                          {% for Listing in instance %}
-                        <div class="col-md-3">
-                            <div class="course-box shop-wrapper">
+                        <div class="col-md-3 col-md-12">
+                            <div class="blog-box">
                                 <div class="image-wrap entry">
-                                   {% thumbnail Listing.logo "250x250" crop="center" as im %}
+                                   {% thumbnail Listing.logo "200x150" crop="center" as im %}
                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                 {% endthumbnail %}
                                     <div class="magnifier">
@@ -74,16 +96,18 @@ All Businesses
                                     </div>
                                 </div>
                                 <!-- end image-wrap -->
-                                <div class=" text-center">
-                                    <h4>
-                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
+                                <div class="  blog-desc course-box shop-wrapper">
+                                    <h4 class="text-center">
+                                        <a href="{% url 'listing_detail' Listing.slug %}">{{ Listing.company_name|truncatechars:25}}</a>
                                         <a href="{{ Listing.category.get_absolute_url }}"><small> {{ Listing.category }}</small></a>
                                     </h4>
+                                    <p>{{ Listing.description|truncatechars:100}}</p>
                                 </div>
                                 <!-- end details -->
 
 
-                            </div><!-- end box --><hr>
+
+                            </div><!-- end box -->
                         </div><!-- end col -->
                          {% endfor %}
 

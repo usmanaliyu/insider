@@ -34,11 +34,17 @@ StartUps
                 <div class="row callout">
                     <div class="newsletter-widget" align="center">
                            <p> Search Startups </p>
-                                <form class="form-inline" role="search" action="{% url 'listing_search' %}">
+                               <form class="form-inline" role="search" action="{% url 'listing_search' %}">
                                     <div class="form-1">
-                                        <input type="text" class="  form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
 
-                                        <div class="btn btn-primary ">
+                                        <div class="custom-box ">
+                                     <input class="custom-txt" type="text" name="Keywords" placeholder="Type to search">
+                                     <a class="custom-btn" href="#">
+                                         <i class="fa fa-search"></i>
+                                     </a>
+                                 </div><hr class="invisible"><br>
+
+
                                             <select class="btn btn-primary" name="country">
                                             <option selected="True" disabled="disabled">Country (All)</option>
                                                 {% for key,value in country_choice.items %}
@@ -46,13 +52,7 @@ StartUps
                                                 <option value="{{ key }}">{{ value }}</option>
 
                                                 {% endfor %}
-
                                          </select>
-                                        </div>
-
-
-
-
 
                                     </div>
                                 </form>

@@ -14,5 +14,4 @@ urlpatterns = [
 
     path('events/', views.events, name='events'),
 
-    path('ranking/', views.instance_ranking, name='create'),
 ]

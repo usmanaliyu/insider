@@ -6,10 +6,21 @@
 
 <br><br><br>
 
+
         <section class="section gb nopadtop">
 
             <div class="container">
                 <div class="boxed">
+
+                    <div class="blog-wrapper clearfix">
+                                    <div class="blog-meta list-inline">
+
+                                        <h3 align="center">{{ instance.company_name}}</h3>
+                                         <p align="center"><small><a href="#">{{ instance.country}}</a></small> |
+                                        <a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a>
+                                        </p>
+
+                                    </div><!-- end blog-meta --></div>
                     <div class="row">
 
                         <div class="sidebar col-md-4">
@@ -88,9 +99,8 @@
                             <div class="content blog-list">
                                 <div class="blog-wrapper clearfix">
                                     <div class="blog-meta list-inline">
-                                        <small><a href="#">{{ instance.country}}</a></small> |
-                                        <li><a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a></li>
-                                        <h3>{{ instance.company_name}}</h3>
+
+
 
                                     </div><!-- end blog-meta -->
 

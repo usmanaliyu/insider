@@ -8,23 +8,28 @@
 
 
 
-        <section class="section lb p120">
+
+
+<section class="section lb p120">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>{{ category.name }}</h3>
-                            <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Edulogy</a></li>
-                                <li class="active">Startups</li>
-                            </ul>
+                            <h3> <bold>{{ category.name }}</bold></h3>
+
                              <div class="newsletter-widget" align="center">
 
                                 <form class="form-inline" role="search" action="{% url 'listing_search' %}">
                                     <div class="form-1">
-                                        <input type="text" class=" form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
 
-                                        <div class="btn btn-primary ">
+                                        <div class="custom-box ">
+                                     <input class="custom-txt" type="text" name="Keywords" placeholder="Type to search">
+                                     <a class="custom-btn" href="#">
+                                         <i class="fa fa-search"></i>
+                                     </a>
+                                 </div><hr class="invisible"><br>
+
+
                                             <select class="btn btn-primary" name="country">
                                             <option selected="True" disabled="disabled">Country (All)</option>
                                                 {% for key,value in country_choice.items %}
@@ -33,25 +38,43 @@
 
                                                 {% endfor %}
                                          </select>
-                                        </div>
+
+
                                     </div>
                                 </form>
 
-                            </div><!-- end newsletter -->
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
         </section><!-- end section -->
 
+
+
+
+
         <section class="section gb nopadtop">
             <div class="container">
                 <div class="boxed boxedp4">
                     <div class="shop-top">
                         <div class="clearfix">
-                             <p class="pull-left">  <a href="{% url 'list_create' %}" class="readmore " >Register your business</a></p>
+                            <div >
+                                <p class="pull-left">  <a href="{% url 'list_create' %}" class="readmore " >Register your business</a></p>
                                  <p class="text-right" >Page {{ instance.number }} of {{ instance.paginator.num_pages }}</p>
 
+                            </div>
                             <div class="pull-right">
 
                             </div>
@@ -60,12 +83,11 @@
 
                     <div class="row blog-grid shop-grid">
 
-                        {% if instance %}
-                        {% for Listing in instance %}
-                        <div class="col-md-3">
-                            <div class="course-box shop-wrapper">
+                         {% for Listing in instance %}
+                        <div class="col-md-3 col-md-12">
+                            <div class="blog-box">
                                 <div class="image-wrap entry">
-                                   {% thumbnail Listing.logo "250x250" crop="center" as im %}
+                                   {% thumbnail Listing.logo "200x150" crop="center" as im %}
                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                 {% endthumbnail %}
                                     <div class="magnifier">
@@ -73,24 +95,21 @@
                                     </div>
                                 </div>
                                 <!-- end image-wrap -->
-                                <div class=" text-center">
-                                    <h4>
-                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
-                                        <small>{{ Listing.category }}</small>
+                                <div class="  blog-desc course-box shop-wrapper">
+                                    <h4 class="text-center">
+                                        <a href="{% url 'listing_detail' Listing.slug %}">{{ Listing.company_name|truncatechars:25}}</a>
+                                        <a href="{{ Listing.category.get_absolute_url }}"><small> {{ Listing.category }}</small></a>
                                     </h4>
+                                    <p>{{ Listing.description|truncatechars:100}}</p>
                                 </div>
                                 <!-- end details -->
 
 
-                            </div><!-- end box --><hr>
+
+                            </div><!-- end box -->
                         </div><!-- end col -->
                          {% endfor %}
-                        {% else %}
-                        <div class=" text-center">
-                        <p>No results for "{{ Keywords }}" </p>
-                        {% endif %}
-                        </div>
-
+                    </div>
                     </div><!-- end row -->
 
                     <hr class="invis">
@@ -113,9 +132,9 @@
                                         {% endif %}
                             </ul>
                         </div><!-- end col -->
+
                     </div><!-- end row -->
                 </div>
             </div><!-- end container -->
-        </section>
 
       {% endblock %}

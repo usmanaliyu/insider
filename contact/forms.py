@@ -12,4 +12,4 @@ class ContactForm(forms.ModelForm):
 
 
 class SubscribeForm(forms.Form):
-    email = forms.CharField(label='',widget=forms.EmailInput)
+    S_email = forms.CharField(label='',widget=forms.EmailInput)

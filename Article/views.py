@@ -13,12 +13,8 @@ from contact .models import Subscribe
 
 
 from django.conf import settings
-import redis
 
 
-r = redis.StrictRedis(host=settings.REDIS_HOST,
-                      port=settings.REDIS_PORT,
-                      db = settings.REDIS_DB)
 
 
 # Create your views here.
@@ -34,9 +30,9 @@ def home(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -60,9 +56,9 @@ def Articles_list(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -82,9 +78,9 @@ def list_of_articles_by_category(request, category_slug):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -116,9 +112,9 @@ def tagged(request, tags_slug):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -151,9 +147,9 @@ def events(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -181,8 +177,7 @@ def detail(request,article_slug):
 
 
 
-    total_views = r.incr('instance:{}:views'.format(instance.id))
-    r.zincrby('instance_ranking', instance.id, 1)
+
 
 
 
@@ -192,9 +187,9 @@ def detail(request,article_slug):
     }
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -237,7 +232,7 @@ def detail(request,article_slug):
         'instance':instance,
         'comments': comments,
         'comment_form':form,
-        'total_views':total_views,
+
         'similar_posts':similar_posts,
         'categories':categories,
         'sub':sub,
@@ -248,24 +243,16 @@ def detail(request,article_slug):
     return render(request,'blog/detail_view.html',context)
 
 
-def instance_ranking(request):
-    instance_ranking = r.zrange('instance_ranking', 0, -1, desc=True)[:10]
-    instance_ranking_ids = [int(id) for id in instance_ranking]
-    most_viewed = list(Article.objects.filter(id__in=instance_ranking_ids))
-    most_viewed.sort(key=lambda x: instance_ranking_ids.index(x.id))
 
-    return render(request, 'blog/ranking.html',
-                  {'section':'instances',
-                   'most_viewed': most_viewed})
 
 
 def search(request):
     categories = Category.objects.all()
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
     if request.GET:

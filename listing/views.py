@@ -16,11 +16,9 @@ from contact .models import Subscribe
 
 
 from django.conf import settings
-import redis
 
-r = redis.StrictRedis(host=settings.REDIS_HOST,
-                      port=settings.REDIS_PORT,
-                      db = settings.REDIS_DB)
+
+
 
 
 
@@ -38,9 +36,9 @@ def Listing_list(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -62,8 +60,7 @@ def listing_detail(request,listing_slug):
     listing_categories = Category.objects.all()
 
 
-    total_views = r.incr('instance:{}:views'.format(instance.id))
-    r.zincrby('instance_ranking', instance.id, 1)
+
 
     initial_data = {
         'content_type': instance.get_content_type,
@@ -71,9 +68,9 @@ def listing_detail(request,listing_slug):
     }
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
     form = CommentForm(request.POST or None, initial=initial_data)
@@ -112,7 +109,7 @@ def listing_detail(request,listing_slug):
         'instance': instance,
         'comments': comments,
         'comment_form': form,
-        'total_views': total_views,
+
         'categories':categories,
         'sub':sub,
         'listing_categories': listing_categories,
@@ -127,9 +124,9 @@ def list_home(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -151,9 +148,9 @@ def listing_search(request):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -245,9 +242,9 @@ def listtag(request, tags_slug):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -282,9 +279,9 @@ def list_of_business_by_category(request, category_slug):
 
     sub = SubscribeForm(request.POST)
     if sub.is_valid():
-        email_data = sub.cleaned_data.get('email')
+        email_data = sub.cleaned_data.get('S_email')
         new_comment, created = Subscribe.objects.get_or_create(
-            email=email_data,
+            S_email=email_data,
         )
         messages.success(request, 'You have subscribed successfully!!')
 
@@ -303,5 +300,6 @@ def list_of_business_by_category(request, category_slug):
         'instance':instance,
         'category':category,
         'sub':sub,
+        'country_choice': country_choice,
                }
     return render(request, 'listing/category_list.html',context)

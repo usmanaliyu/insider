@@ -33,10 +33,12 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'Article',
     'comments',
     'taggit',
@@ -47,6 +49,14 @@ INSTALLED_APPS = [
     'contact',
     'Account',
     'advert',
+
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
 
 ]
 
@@ -169,5 +179,6 @@ EMAIL_HOST_PASSWORD = 'abbatibabu'
 EMAIL_PORT = 587
 EMAIL_USER_TLS = True
 
+SITE_ID = 1
 
 
