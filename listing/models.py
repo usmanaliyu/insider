@@ -88,6 +88,12 @@ class Listing(models.Model):
     motto = models.TextField(max_length=1000, blank=True)
     description = models.TextField(max_length=5000, blank=False)
     tags = TaggableManager(verbose_name='Products(separate with comma)')
+    terms = models.CharField (verbose_name='I agree to Terms and Conditions',max_length=50,blank=False,default=1, choices=
+                                   (
+                                       ('yes','Yes'),
+
+
+                                   ))
 
     def __str__(self):
         return self.company_name

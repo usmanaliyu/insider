@@ -201,6 +201,7 @@ def instance_ranking(request):
 
 
 def search(request):
+    categories = Category.objects.all()
     if request.GET:
         search_term = request.GET['search_term']
         search_result = Article.objects.filter(
@@ -213,6 +214,7 @@ def search(request):
         content ={
             'search_term':search_term,
             'instance':search_result,
+            'categories':categories,
         }
         return render(request,'blog/search.html',content)
     else:

@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+Events
+{% endblock %}
 
 {% block content %}
- <section class="parallax event-section" data-stellar-background-ratio="0.5" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');">
+ <section class="parallax event-section" data-stellar-background-ratio="0.5" style="background-image:url('{% static 'upload/event.jpg' %}');">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message event-title text-center">
-                            <h3>Edulogy Meetup Event 2018</h3>
-                            <p>21 - 26 Aug, 2018, San Francisco, CA - Limited number of guests</p>
-                            <a href="#" class="btn btn-primary">GET TICKETS</a>
+                            <h3  >Startup of the year <span>and</span> Meetup Event 2019</h3>
+                            <p>15 - 17 Dec, 2019, Nairobi, Kenya - Limited number of guests</p>
+                            <a href="{% url 'list_create' %}" class="btn btn-primary">Participate </a>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -22,12 +25,12 @@
                 <a href="#">
                 <div class="row callout">
                     <div class="col-md-4 text-center">
-                        <h3><sup>$</sup>49.99</h3>
-                        <h4>Start your awesome course today!</h4>
+                        <h3><sup>$</sup>10,000</h3>
+                        <h4>Grand price</h4>
                     </div><!-- end col -->
 
                     <div class="col-md-8">
-                        <p class="lead">Limited time offer! Your profile will be added to our "Students" directory as well. </p>
+                        <p class="lead">Register your business and stand a chance to be the Entrepreneur of the year.  </p>
                     </div>
                 </div><!-- end row -->
                 </a>
@@ -36,42 +39,5 @@
 
 
 
-        <section class="section gb nopadtop">
-            <div class="container">
-                <div class="row event-boxes">
-                    <div class="col-md-4">
-                        <div class="box m30">
-                            <img src="upload/blog_01.jpg" alt="" class="img-responsive">
-                            <div class="event-desc">
-                            <small>Day 1</small>
-                            <h4>Gathering & welcome speech</h4>
-                            <p>Ut volutpat elementum venenatis. In id neque nec tellus iaculis semper. Aenean fringilla velit ut leo luctus, blandit aliquet turpis dictum.</p>
-                            </div>
-                        </div>
-                    </div><!-- end col -->
 
-                    <div class="col-md-4">
-                        <div class="box m30">
-                            <img src="upload/blog_02.jpg" alt="" class="img-responsive">
-                            <div class="event-desc">
-                            <small>Day 2</small>
-                            <h4>Successful Marketing Strategy</h4>
-                            <p>Morbi nec ornare ipsum. Curabitur tortor sapien, faucibus commodo metus porta, venenatis lobortis nibh. Proin molestie est et nunc aliquam iaculis.</p>
-                            </div>
-                        </div>
-                    </div><!-- end col -->
-
-                    <div class="col-md-4">
-                        <div class="box m30">
-                            <img src="upload/blog_03.jpg" alt="" class="img-responsive">
-                            <div class="event-desc">
-                            <small>Day 3</small>
-                            <h4>Award and certificate distribution</h4>
-                            <p> Mauris cursus, ipsum eget mollis pretium, nisl felis rhoncus nulla, sed dignissim ligula lorem ac enim. Pellentesque quis libero feugiat, lacinia.</p>
-                            </div>
-                        </div>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section>
 {% endblock %}

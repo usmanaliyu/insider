@@ -29,7 +29,7 @@ def Listing_list(request):
     instance_list = Listing.objects.all()
     categories = Category.objects.all()
 
-    paginator = Paginator(instance_list, 8)
+    paginator = Paginator(instance_list, 12)
     page = request.GET.get('page')
     instance = paginator.get_page(page)
     listing_categories = Listing_category.objects.all()
@@ -148,7 +148,7 @@ def listing_search(request):
 
 class listcreate(LoginRequiredMixin,CreateView):
     model = Listing
-    fields = ['logo','company_name','segment','description','motto','tags','phone_number','email','street','city','country']
+    fields = ['logo','company_name','segment','description','motto','tags','phone_number','email','street','city','country','terms']
     template_name = 'listing/create.html'
 
     def form_valid(self, form):

@@ -320,6 +320,11 @@
 {% endif %}
 
 
+                                        {% if instance.link %}
+                                    <h3><span>sources</span></h3>
+
+                                        <li><a href="{{ instance.link }}">{{ instance.link_name }}</a> </li>
+                                        {% endif %}
 
 
 

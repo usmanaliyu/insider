@@ -123,3 +123,11 @@ M
 Article/tests.py,0/7/07a5a076bcd377c8d5106e4596cf841b38d6eedd
 J
 templates/blog/search.html,9/e/9e8086b990b4b584485529da44c0b4d82197b0f9
+M
+templates/user/termofuse.html,5/c/5cd6e34d1a0057682345f95ff496357a5290584e
+>
+advert/urls.py,a/7/a7279e9b51580769df484b1dcc806aeff28ca65b
+?
+advert/views.py,d/c/dc9f2d8b46a68d1a62f9123f407cc6c1ddc89b97
+L
+templates/ad/guidelines.html,0/0/00d78f215c49c81030d5278f486cf9a6cc032064

@@ -2,19 +2,16 @@
 {% load static %}
 {% load thumbnail %}
 {% block title %}
-ARTICLES
+Search results for "{{ search_term}}"
 {% endblock %}
 {% block content %}
-        <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
+        <section class="section db p120" style="background-image:url('{% static 'upload/articles.jpg' %}');>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>Articles</h3>
-                            <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Topics</a></li>
-                                <li class="active">Articles </li>
-                            </ul>
+                            <h3>Search results for "{{search_term}}"</h3>
+
                          </div><!-- end col -->
                     </div><!-- end row -->
                 </div>
@@ -76,6 +73,13 @@ ARTICLES
                                         </div>
                             </div><!-- end col -->
                                </div><!-- end row --><hr>
+                            {% empty %}
+                             <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                           <br> <p>No search results for "{{search_term}}"</p>
+
+                         </div><!-- end col -->
+                    </div><!-- end row -->
                                {% endfor %}
 
 

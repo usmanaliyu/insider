@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block title %}
+Contact
+{% endblock %}
 {% block content %}
 
 
 
 
-
+<br><br><br>
 
  <section class="section gb nopadtop">
             <div class="container">
@@ -30,7 +33,7 @@
 
                                         {{ contact_form|crispy }}
 
-                                            <input  class="btn btn-primary" type="submit" value="Post Comment">
+                                            <input  class="btn btn-primary" type="submit" value="Send">
                    <input type="hidden" name="next" value="{{ next }}">
                                 </form>
 

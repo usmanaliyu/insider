@@ -2,18 +2,18 @@
 {% load static %}
 {% load thumbnail %}
 {% block title %}
-ARTICLES
+Articles
 {% endblock %}
 {% block content %}
-        <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
+        <section class="section db p120" style="background-image:url('{% static 'upload/articles.jpg' %}');>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
                             <h3>Articles</h3>
                             <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Topics</a></li>
-                                <li class="active">Articles </li>
+                                <li><a href="javascript:void(0)">Articles</a></li>
+                                <li class="active">All </li>
                             </ul>
                         </div>
                     </div><!-- end col -->
@@ -118,15 +118,11 @@ ARTICLES
                         </div><!-- end col -->
 
                         <div class="sidebar col-md-4">
-                            <div class="widget clearfix">
-                                <div class="banner-widget">
-                                    <img src="upload/banner.jpeg" alt="" class="img-responsive img-rounded">
-                                </div>
-                            </div>
+
 
 
                            <div class="widget clearfix">
-                                <h3 class="widget-title">All Categories</h3>
+                                <h3 class="widget-title"><br>All Categories</h3>
 
                                     <ul class="list-inline">
                                         {% for category in categories %}
@@ -150,6 +146,13 @@ ARTICLES
                                     </form>
                                 </div><!-- end newsletter -->
                             </div><!-- end widget -->
+
+
+                            <div class="widget clearfix">
+                                <div class="banner-widget">
+                                    <img src="{% static 'upload/banner.jpg' %}" alt="" class="img-responsive img-rounded">
+                                </div>
+                            </div>
 
 
                         </div><!-- end sidebar -->

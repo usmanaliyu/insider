@@ -28,7 +28,7 @@ Register
       {% csrf_token %}
       {{ form|crispy}}
 
-
+<a href="{% url 'term_of_use' %}">Terms and Conditions</a><br>
 
      <button type="submit" class="btn btn-primary">Register</button>
              <input type="hidden" name="next" value="{{ next }}"> </form>

@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% block title %}
+{{ tag.name }}
+{% endblock %}
 {% block content %}
-        <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
+        <section class="section db p120" style="background-image:url('{% static 'upload/tags.jpg' %}');>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
                             <h3>{{ tag.name }}</h3>
                             <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Topics</a></li>
+                                <li><a href="javascript:void(0)">Tags</a></li>
                                 <li class="active">{{ tag.name }}</li>
                             </ul>
                         </div>

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'listing',
     'django_countries',
     'contact',
-    'Account'
+    'Account',
+    'advert',
 
 ]
 
