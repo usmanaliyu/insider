@@ -33,9 +33,9 @@ def Listing_list(request):
 
 
 
-def listing_detail(request,id):
-    instance = get_object_or_404(Listing, pk=id)
-
+def listing_detail(request,listing_slug):
+    instance = get_object_or_404(Listing, slug=listing_slug)
+    categories = Category.objects.all()
 
 
     total_views = r.incr('instance:{}:views'.format(instance.id))
@@ -81,7 +81,7 @@ def listing_detail(request,id):
         'comments': comments,
         'comment_form': form,
         'total_views': total_views,
-
+        'categories':categories,
 
     }
     return render(request, 'listing/business_detail.html', context)

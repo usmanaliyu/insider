@@ -99,13 +99,7 @@ def events(request):
     }
     return render(request,'blog/events.html',content)
 
-def contact(request):
-    categories = Category.objects.all()
 
-    content = {
-        'categories': categories,
-    }
-    return render(request,'blog/contact.html',content)
 
 
 
@@ -116,6 +110,7 @@ def contact(request):
 
 def detail(request,id):
     instance = get_object_or_404(Article,pk=id)
+    categories = Category.objects.all()
 
 
 

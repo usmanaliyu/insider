@@ -12,6 +12,6 @@ urlpatterns = [
 
 
     path('events/', views.events, name='events'),
-    path('contact/', views.contact, name='contact'),
+
     path('ranking/', views.instance_ranking, name='create'),
 ]

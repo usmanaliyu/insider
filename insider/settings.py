@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'listing',
     'django_countries',
+    'contact',
+
 ]
 
 MIDDLEWARE = [

@@ -72,7 +72,7 @@
                                 <!-- end image-wrap -->
                                 <div class="course-details shop-box text-center">
                                     <h4>
-                                        <a href="shop-single.html" title="">{{ Listing.company_name}}</a>
+                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name}}</a>
                                         <small>{{ Listing.segment }}</small>
                                     </h4>
                                 </div>

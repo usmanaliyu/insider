@@ -45,8 +45,6 @@ J
 static/css/prettyPhoto.css,5/1/513ed1a39e3a54d49bf7ae8cf578b39f03420c53
 A
 listing/models.py,1/a/1a3d0140479c0f1553c082a4cb84d879a1ab7967
-S
-#templates/listing/listing_list.html,9/5/95aee8c1c24e50fbbfe52abec4bd4803805aebd9
 ?
 listing/urls.py,a/b/abb8fbfbee22da4e645852187a1b98bd05b3944f
 @
