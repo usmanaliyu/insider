@@ -121,3 +121,5 @@ M
 templates/listing/delete.html,a/f/afb3cfae45a231a7329e3c34aab58755fa22a97f
 @
 Article/tests.py,0/7/07a5a076bcd377c8d5106e4596cf841b38d6eedd
+J
+templates/blog/search.html,9/e/9e8086b990b4b584485529da44c0b4d82197b0f9

@@ -80,3 +80,5 @@ class UserList(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Listing.objects.filter(user=user)
 
+def term_of_use(request):
+    return render(request,'user/termofuse.html')

@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail%}
+{% load crispy_forms_tags %}
+{% block title %}
+{{ instance.title }}
+{% endblock %}
+{% block content %}
+
+
+
+
+<section class="section gb ">
+            <div class="container">
+                <div class="boxed">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="content ">
+                                <div class="blog-wrapper clearfix">
+
+
+                                        <h3 >Term of use</h3>
+                                    <h4>Listings Service Agreement Standard Terms and Conditions
+                                    This Terms of Use was last updated on July 1, 2019.
+                                    THIS IS A LEGALLY-BINDING AGREEMENT. PLEASE READ THIS ENTIRE
+                                        AGREEMENT CAREFULLY.</h4>
+                                    <h4>1.	Acknowledgement & Acceptance of Agreement</h4>
+		                           <p> This Listings Service Agreement (along with all other applicable terms and
+                                    conditions, including,
+                                    without limitation, the African-startups.com Terms of Use, the Code of Conduct
+                                    and the Editorial Guidelines, which are hereby incorporated by reference
+                                    in this 'Agreement') is made and entered into by African-startups.com and the business
+                                    entity identified by you when registering and accepting this Agreement
+                                    (the 'Advertiser' or 'you') by clicking on an 'I Accept' button or similar
+                                    button or link, where such action is identified as having the effect of
+                                    accepting this Agreement. You acknowledge, represent and warrant
+                                    that you are authorized to enter into this Agreement on behalf
+                                    of the Advertiser, that your Acceptance of this Agreement has
+                                    the effect of making the Advertiser a party bound to this Agreement,
+                                    and that the information submitted by you to African-startups.com, via online
+                                    forms or otherwise, is and will continue to be authentic and correct.
+		                            Pursuant to this Agreement, Advertiser submits business Business Listing(s)
+                                    and/or link(s) to, its
+                                    web site(s) for inclusion on African-startups.com's web site. The terms and
+                                    conditions applicable are set forth below.
+		                            Basic inclusion of a website title, description and URL ('Business Listing')
+                                    on the African-startups.com s
+                                    ite are sold on an inclusion basis for a one time, non-refundable
+                                    setup fee and an annual renewal fee. THE SETUP FEE IS IN CONSIDERATION FOR
+                                    AFRICAN-STARTUPS.COM'S EDITORIAL REVIEW OF THE BUSINESS LISTING SUBMISSION AND IS
+                                    THEREFORE NON-REFUNDABLE, EVEN IN THE EVENT THAT AFRICAN-STARTUPS.COM DECLINES TO
+                                    INCLUDE ADVERTISER'S BUSINESS LISTING. African-startups.com may, in its sole discretion,
+                                    change the setup or annual renewal fee at any time.
+		                            Following submission by Advertiser of a Business Listing submission form,
+                                    African-startups.com will review the Business Listing entry containing the information
+                                    submitted by Advertiser regarding its website, to determine whether Advertiser's
+                                    Business Listing entry and applicable web site is eligible for inclusion in
+                                    African-startups.com. Within five (5) business days from the date the Business Listing
+                                    submission form is received by African-startups.com, African-startups.com will review Advertiser's
+                                    Business Listing entry inclusion to determine whether it is eligible for
+                                    inclusion in African-startups.com.</p>
+
+
+
+                                   <H4> 2.	Notification of Changes</H4>
+                                    <P>African-startups.com may, at any time in its sole discretion, change the terms
+                                    of this Agreement. Modifications may include, without limitation, increases
+                                    to the annual fees charged for the Listing Services. Whenever African-startups.com
+                                    changes this Agreement, it will post those changes to its Web Site and will
+                                    update the 'Last Updated' date at the top of this Agreement. The revised terms
+                                    will become effective on the date African-startups.com posts such changes to its Web Site,
+                                    except annual fee increases will become effective at the time your annual Agreement
+                                    automatically renews. It is your obligation to check this Agreement regularly
+                                    to ensure you are updated as to any changes. Without limiting the foregoing,
+                                    if African-startups.com determines in its sole discretion that the modification is
+                                    material, it will notify you electronically via the email address associated
+                                    with each account. If any modification to this Agreement is not acceptable to
+                                    you, your only remedy is to notify African-startups.com of your election not to renew
+                                        your Agreement, as provided in Section 3 below.</P>
+
+                                   <h4> 3.	Term of Agreement</h4>
+		                            <p>African-startups.com may, at any time in its sole discretion, with or without cause, terminate
+                                    this Agreement and/or cancel any listings or links submitted under this Agreement.
+		                            Auto-Renewal: Advertiser's 2. Business Listing subscription will be automatically
+                                    renewed for successive one-year terms, unless Advertiser notifies African-startups.com by
+                                    sending an email with the words 'CANCELLATION' in the subject line to customerservice@bAfrican-startups.com.
+                                    Advertiser shall deliver such notice at least thirty (30) days prior to the commencement of
+                                    the next renewal term. If African-startups.com is unable to process Advertiser's credit card payment
+                                    because the credit card has expired or is otherwise invalid, then African-startups.com may contact
+                                    Advertiser to obtain payment information and/or cancel Advertiser's subscription and/or run
+                                    the credit card with updated expiration date.
+		                            The cost of the renewed Listing will be the then-current standard rate. Advertiser's
+                                    credit card will be charged the non-refundable renewal fee in accordance with the terms
+                                        of this Agreement.</p>
+
+                                    <h4>4.	Service Fees and Payment Terms</h4>
+		                           <p> Advertiser agrees to pay all applicable charges under this Agreement, including any
+                                    applicable taxes or charges imposed by any government entity. If Advertiser disputes
+                                    any charge made under this Agreement, Advertiser must notify African-startups.com in writing
+                                    within sixty (60) days after any such charge; failure to so notify African-startups.com shall
+                                    result in the waiver by Advertiser of any claim relating to any such disputed charge.
+                                    Charges shall be calculated solely based on records maintained by African-startups.com. No other
+                                    measurements or statistics of any kind shall be accepted by African-startups.com or have
+                                    any effect under this Agreement.
+		                            Fees: Advertiser agrees to pay all applicable charges under this Agreement, including
+                                    any applicable taxes or charges imposed by any government entity. If Advertiser disputes
+                                    any charge made under this Agreement, Advertiser must notify African-startups.com by sending
+                                    a detailed notice of dispute to African-startups.com via email at: billing@africa-startups.com within
+                                    ten (10) days of the charge; failure to so notify African-startups.com shall result in the
+                                    waiver by Advertiser of any claim relating to any such disputed charge. Charges shall
+                                    be calculated solely based on records maintained by African-startupscom. No other measurements
+                                    or statistics of any kind shall be accepted by African-startups.com or have any effect under
+                                    this Agreement. All payments made under this Agreement are non-refundable.
+		                            Late Payments: Any charges which are past due by more than thirty (30) days shall bear
+                                    interest at the rate of one percent (1%) per month or the maximum rate permitted
+                                    by applicable law, whichever is less, and Advertiser shall reimburse African-startups.com
+                                    for any costs and fees (including attorneys' fees) incurred by African-startups.com in an
+                                    effort to collect any amount due hereunder.
+		                            Disputes: If Advertiser has any questions or objections regarding charges to its
+                                    credit card, it must promptly (within 30 days) notify African-startups.com in writing (including
+                                    electronic mail) and make a reasonable and good faith effort to resolve its objection before
+                                    it disputes the charge with the credit card processing company. Such notice must identify
+                                    the amount in dispute and must provide in reasonable detail the basis for disagreement
+                                    with any charges. If (a) Advertiser fails to comply with these requirements BEFORE filing
+                                    a dispute with the credit card processing company, or (b) advertiser files a dispute with
+                                    the credit card processing company that is not in good faith, Advertiser will be in material
+                                    breach of this Agreement and African-startups.com will be entitled to liquidated damages calculated
+                                    as follows in addition to any equitable remedies available to it. Liquidated damages may
+                                    include but not be limited to: all fees accrued up to the termination of this Agreement,
+                                    plus attorney fees and costs, plus late fees on the foregoing at the legal rate of interest.
+                                    For purposes of this paragraph, disputing payment because of inability to pay or because of
+                                    Advertiser's failure to submit a proper notice of non-renewal by the applicable date shall
+                                    not be considered to be a good faith dispute.
+		                            Payment Method: To maintain a Listing account with African-startups.com, Advertiser must maintain a
+                                    valid Visa, MasterCard or American Express credit card number on file with us. Advertiser's
+                                    credit card will be charged upon submission and renewal of a Listing pursuant to Section 6 below.
+                                    Listing accounts are renewed on an annual basis as set forth in Section 6. Advertisers are
+                                    generally required to pay for Listings by the credit card method.</p>
+
+
+                                    <h4>5.	Editorial Standards and Requirements</h4>
+		                            <p>Advertiser's Listing entries are written by African-startups.com, or written by Advertiser
+                                    subject to African-startups.com's approval. Advertiser agrees to be bound by and follow the
+                                    African-startups.com editorial standards as described in African-startups.com's Editorial Guidelines.
+                                    Advertiser's submissions to the BAfrican-startups.com site will be subject to African-startups.com
+                                    editorial review, modification and/or removal in African-startups.com's sole discretion.
+                                    African-startups.com reserves the right, but not the obligation, to review Advertiser submissions.
+		                            ADVERTISER REPRESENTS AND WARRANTS THAT ITS LISTINGS, LINKS AND SUBMISSIONS TO THE
+                                    AFRICAN-STARTUPS.COM SITE DO NOT, AND WILL NOT INCLUDE CONTENT, OR LINKS TO CONTENT, WHICH
+                                    MAY RESULT IN A CLAIM AGAINST, OR CIVIL OR CRIMINAL LIABILITY TO, AFRICAN-STARTUPS.COM OR
+                                    THAT OTHERWISE VIOLATES APPLICABLE LAW OR THE TERMS OF THIS AGREEMENT, INCLUDING,
+                                    WITHOUT LIMITATION, CONTENT THAT IS FRAUDULENT, DECEPTIVE, LIBELOUS, DEFAMATORY,
+                                    OBSCENE, PORNOGRAPHIC, ADULT-THEMED, INFRINGING OR THAT VIOLATES THE PRIVACY,
+                                    PUBLICITY OR ANY OTHER RIGHT(S) OF A THIRD PARTY.
+		                            ADVERTISER HEREBY AGREES TO INDEMNIFY, DEFEND AND HOLD HARMLESS AFRICAN-STARTUPS.COM AND
+                                    ITS AFFILIATES AND PARTNERS, AND ANY OF THEIR RESPECTIVE OFFICERS, DIRECTORS,
+                                    PARTNERS, SHAREHOLDERS, AGENTS, LICENSEES AND EMPLOYEES, FROM AND AGAINST ALL
+                                    THIRD PARTY CLAIMS, ACTIONS, LIABILITIES, LOSSES, EXPENSES, DAMAGES, AND COSTS
+                                    INCLUDING, WITHOUT LIMITATION, REASONABLE ATTORNEYS' FEES (COLLECTIVELY, 'LOSSES')
+                                    THAT MAY AT ANY TIME BE INCURRED AS A RESULT OF ANY THIRD PARTY CLAIMS, SUITS OR
+                                    PROCEEDINGS: (A) ARISING OUT OF ANY BREACH BY ADVERTISER OF ANY DUTY, REPRESENTATION
+                                    OR WARRANTY UNDER THIS AGREEMENT; OR (B) ARISING FROM THE CONTENT OR SUBJECT MATTER
+                                    OF ANY ADVERTISER LISTING, LINK, SUBMISSION OR CONTENT OF SITES TO WHICH VISITORS
+                                    CAN LINK THROUGH ADVERTISER'S LINKS OR LISTINGS. AFRICAN-STARTUPS.COM RETAINS COMPLETE
+                                    EDITORIAL DISCRETION WITH RESPECT TO ALL LISTINGS AND LINKS, INCLUDING, WITHOUT
+                                    LIMITATION, REGARDING THE SELECTION, PLACEMENT, KEYWORDS, TITLE, DESCRIPTIONS AND
+                                    MULTILINKS.</p>
+
+
+                                    <h4>6.	Security</h4>
+		                            <p>African-startups.com endeavors to protect the security of Advertiser's payment information
+                                    during transmission by using Secure Sockets Layer ('SSL') when receiving payment
+                                    information through the African-startups.com website. It is important for Advertiser to
+                                    protect against unauthorized access to your password and your computer. You are
+                                    solely responsible for maintaining the confidentiality of your account and password
+                                    and for restricting access to your computer, and Advertiser agrees to accept full
+                                        responsibility for all activities conducted using Advertiser's account on African-startups.com</p>
+
+
+
+                                    <h4>7.	Registration Information</h4>
+		                            <p>In connection with the Listing program, Advertiser is required to submit
+                                    registration information. African-startups.com may use such information to contact
+                                    Advertiser regarding its listings and links. African-startups.com may disclose such
+                                    information to its third party vendors and service providers in connection with
+                                    conducting its business and providing and maintaining its site, and, in addition,
+                                    in the good faith belief that such disclosure is reasonably necessary to (a) comply
+                                    with the law or legal process; (b) enforce this Agreement; or (c) protect the rights
+                                    or interests of African-startups.com, its affiliates or related parties. Notwithstanding
+                                    anything to the contrary herein, African-startups.com may transfer, sell or assign such
+                                    information to third parties as a result of a merger, consolidation or combination
+                                        of African-startups.com with another entity.</p>
+
+
+
+
+                                    <h4>8.	License</h4>
+	                                	<p>Advertiser hereby grants to African-startups.com a worldwide, limited, non-exclusive,
+                                    non-transferable, royalty-free license to: (i) reproduce, distribute, transmit,
+                                    display, perform, download, cache, store on its servers, and otherwise use
+                                    Advertiser's listings and submissions, and any portion thereof, including, without
+                                    limitation, the trademarks, trade names, service marks and logos set forth therein,
+                                    or as otherwise specified in writing by Advertiser (collectively the 'Advertiser
+                                    Marks'), for purposes of providing the services covered by this Agreement; and (ii)
+                                    incorporate in African-startups.com's sites links provided by Advertiser as part of its
+                                            listings and submissions.</p>
+
+
+
+
+                                    <h4>9	Warranty Disclaimer</h4>
+	                                	<p>NEITHER AFRICAN-STARTUPS.COM NOR ITS SUPPLIERS OR VENDORS MAKE ANY WARRANTIES
+                                    (INCLUDING, WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS
+                                    FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT), GUARANTIES, REPRESENTATIONS,
+                                    PROMISES, STATEMENTS, ESTIMATES, CONDITIONS OR OTHER INDUCEMENTS, EXPRESS, IMPLIED,
+                                    ORAL, WRITTEN OR OTHERWISE. AFRICAN-STARTUPS.COM'S OBLIGATIONS UNDER THIS AGREEMENT ARE
+                                    SUBJECT TO DELAYS CAUSED BY WAR, TERRORISM, ACT OF GOD, EMBARGOES, OR ANY OTHER
+                                    CIRCUMSTANCES BEYOND AFRICAN-STARTUPS.COM'S REASONABLE CONTROL. ADVERTISER ACKNOWLEDGES
+                                    THAT AFRICAN-STARTUPS.COM'S SITE IS OPERATED ON AN 'AS IS', 'AS AVAILABLE' BASIS, AND THAT
+                                    NEITHER AFRICAN-STARTUPS.COM NOR ITS SUPPLIERS OR VENDORS MAKES ANY REPRESENTATIONS OR
+                                    WARRANTIES OF ANY KIND WHATSOEVER REGARDING THE PLACEMENT OF LISTINGS OR LINKS OR
+                                            THE PERFORMANCE OR SECURITY OF ITS WEB SITE OR SERVICES.</p>
+
+
+                                    <H4> 10.	Limitation of Liability</H4>
+	                                        	IN NO EVENT SHALL AFRICAN-STARTUPS.COM OR ANY OF ITS SUPPLIERS, VENDORS OR
+                                    AFFILIATES BE LIABLE OR RESPONSIBLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL,
+                                    SPECIAL OR EXEMPLARY DAMAGES OF ANY KIND, INCLUDING WITHOUT LIMITATION, LOST PROFITS
+                                    OR LOST OPPORTUNITIES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES IN ADVANCE
+                                    AND REGARDLESS OF THE CAUSE OF ACTION UPON WHICH ANY SUCH CLAIM IS BASED. IN NO EVENT
+                                    SHALL AFRICAN-STARTUPS.COM'S LIABILITY FOR ANY REASON WHATSOEVER EXCEED THE FEES PAID TO
+                                    AFRICAN-STARTUPS.COM BY ADVERTISER UNDER THIS AGREEMENT DURING THE SIX MONTH PERIOD PRIOR
+                                    TO THE TIME THE APPLICABLE CLAIM ACCRUED.
+	                                       <H4> 11.	Privacy</H4>
+	                                        	<P>In no event shall Advertiser collect, or cause or permit the collection
+                                    of, any Personal Information (as defined below) from users of African-startups.com's site while
+                                    such users are browsing or viewing African-startups.com's sites, or place any file or code,
+                                    including cookies, on the personal computers of users of African-startups.com's sites while
+                                    such users are browsing or viewing African-startups.com's sites. African-startups.com's privacy policies
+                                    shall apply to users of African-startups.com's Web Site while users are browsing or viewing
+                                    African-startups.com's site, and Advertiser shall comply with same. African-startups.com shall own
+                                    all information relating to user access to African-startups.com's site, including, but not
+                                    limited to, all Personal Information, demographics and usage information gathered
+                                    therefrom. 'Personal Information' includes an individual's name, address, e-mail
+                                    address, age, date of birth, credit card or other financial information, or any
+                                    other contact or personal information about an individual or from which the personal
+                                                    information about an individual can be derived.</P>
+
+
+
+                                    <H4>12.	Reservation of Rights</H4>
+	                                        	<P>Advertiser agrees that African-startups.com retains all right, title and interest
+                                    in and to African-startups.com's technology, services and other intellectual property rights.
+                                    Advertiser agrees that it will not reproduce, distribute, alter, modify, copy, edit,
+                                    format, create derivative works of or otherwise use any materials, content or
+                                    technology provided by African-startups.com, except as explicitly provided herein or
+                                                    approved in advance in writing by African-startups.com.</P>
+
+
+
+                                    <H4>13.	Miscellaneous</H4>
+	                                        	<P>African-startups.com reserves the right, in its sole discretion, to (i)
+                                    remove Advertiser's Listing and/or cancel Advertiser's account for any reason
+                                    or no reason; (ii) change the fees for Listing; (iii) change the procedures or
+                                    rules for obtaining or maintaining a Listing; (iv) alter the content or other
+                                    aspect of any Listing; and (v) discontinue Listing and/or the African-startups.com Directory
+                                    or website. Payment of Advertiser's fee will not guarantee that Advertiser's listing(s),
+                                    link(s) and/or account will remain on the African-startups.com Directory or website if
+                                    Advertiser or Advertiser's listing is deemed to be in violation of any term or
+                                    condition of this Agreement. Upon any termination or expiration of this Agreement,
+                                    Advertiser shall promptly pay African-startups.com all moneys due hereunder.
+                                                    Receipt times of all submissions, notices and other correspondences
+                                    and transactions via the African-startups.com site are measured based on receipt by
+                                    African-startups.com's servers. This Agreement: (a) shall be governed by and construed in
+                                    accordance with, the laws of the State of California, without giving effect to
+                                    principles of conflicts of law; (b) constitutes the complete and entire expression
+                                    of the agreement between the parties with respect to the subject matter hereof; and
+                                    (c) shall supersede any and all other agreements, whether written or oral, between
+                                    the parties, including, without limitation, any print, online and electronic
+                                    promotional materials. All waivers hereunder by African-startups.com must be expressly
+                                    made in writing. Should any provision of this contract be held to be void, invalid,
+                                    or inoperative, such provision shall be modified to reflect the fullest enforceable
+                                    intent of the parties, or if such modification is not possible, severed, and the
+                                    remaining provisions of this contract shall not be affected and shall continue in
+                                    full force and effect. Exclusive venue for all disputes arising out of or related
+                                    to this Agreement shall be the state and federal courts located in San Diego County,
+                                    California, and each party hereby irrevocably consents thereto. Any rights or
+                                    obligations hereunder may not be transferred or assigned by Advertiser without
+                                    the prior written consent of African-startups.com. African-startups.com may freely assign and
+                                                    delegate the Agreement and any of its rights and obligations hereunder</P>
+
+
+
+
+
+
+
+
+                                        <p>detail</p>
+
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end boxed -->
+            </div><!-- end container -->
+        </section>
+
+{% endblock %}
