@@ -13,3 +13,15 @@ C
 Article/views.py,3/5/358ea0e01711136f441ebebd4bf9365f988ae73b
 H
 templates/blog/home.html,b/a/bafdaab245b44de7357122bcbb0e1e1a7424c351
+@
+static/style.css,e/a/ea7b422455b8b60eb5b1123f19040f20653b36a4
+O
+templates/blog/detail_view.html,c/0/c0a9f3886602895d827496d1f6030ecd001e17fe
+Q
+!templates/blog/category_list.html,c/9/c99639469483397236b82ded9b2e5992f30df1c6
+J
+templates/blog/events.html,1/a/1a39543af85f85f1bc9806e72f74fc963eb86ce1
+Q
+!templates/blog/articles_list.html,5/5/5594957ed1e437fd7cf00f0846fc06e159b34429
+K
+templates/blog/contact.html,c/d/cd5a06fbf9adc4a548dc7f98d290e4270cac7771
