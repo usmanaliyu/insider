@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.contrib import messages
 from . forms import ContactForm,SubscribeForm
 from .models import Subscribe
+from django.views.decorators.cache import cache_page
 
 
 
 # Create your views here.
 
-
+@cache_page(60 * 15)
 def contact_page(request):
 
     contact_form = ContactForm(request.POST)

@@ -45,7 +45,7 @@ def home(request):
     return render(request, 'blog/home.html', content)
 
 
-
+@cache_page(60 * 15)
 def Articles_list(request):
     instance_list= Article.objects.all()
     categories = Category.objects.all()
@@ -70,7 +70,7 @@ def Articles_list(request):
     return render(request,'blog/article_list.html',content)
 
 
-
+@cache_page(60 * 15)
 def list_of_articles_by_category(request, category_slug):
 
     instance = Article.objects.all()
@@ -104,7 +104,7 @@ def list_of_articles_by_category(request, category_slug):
 
 
 
-
+@cache_page(60 * 15)
 def tagged(request, tags_slug):
     categories = Category.objects.all()
     tag_category = Tag.objects.all()
@@ -142,7 +142,7 @@ def tagged(request, tags_slug):
 
 
 
-
+@cache_page(60 * 15)
 def events(request):
 
     sub = SubscribeForm(request.POST)
@@ -166,7 +166,7 @@ def events(request):
 
 
 
-
+@cache_page(60 * 15)
 def detail(request,article_slug):
     instance = get_object_or_404(Article,slug=article_slug)
     categories = Category.objects.all()
@@ -245,7 +245,7 @@ def detail(request,article_slug):
 
 
 
-
+@cache_page(60 * 15)
 def search(request):
     categories = Category.objects.all()
     sub = SubscribeForm(request.POST)

@@ -103,13 +103,13 @@ Home
                             </div><!-- end col -->
                             <div class="col-md-8">
                                 <div class="blog-wrapper clearfix">
-                                            <div class="blog-meta">
+                                            <div class="blog-meta blog-desc">
 
                                                 <small><a href="{{ Article.category.get_absolute_url }}">{{ Article.category}}</a></small>
-                                            </div><!-- end blog-meta -->
 
-                                            <div class="blog-desc-big">
-                                                <p class="lead"><a href="{% url 'detail' Article.slug %}"> {{ Article.title }}</a></p>
+
+
+                                                <h4><a href="{% url 'detail' Article.slug %}"> {{ Article.title }}</a></h4>
                                                 <p> {{ Article.summary }}<a href="{% url 'detail' Article.slug%}">...</a></p>
 
 

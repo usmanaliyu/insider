@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from contact .forms import SubscribeForm
 from contact .models import Subscribe
+from django.views.decorators.cache import cache_page
 
 
 from django.conf import settings
@@ -24,7 +25,7 @@ from django.conf import settings
 
 
 # Create your views here.
-
+@cache_page(60 * 15)
 def Listing_list(request):
     instance_list = Listing.objects.all()
     categories = Category.objects.all()
@@ -53,7 +54,7 @@ def Listing_list(request):
 
 
 
-
+@cache_page(60 * 15)
 def listing_detail(request,listing_slug):
     instance = get_object_or_404(Listing, slug=listing_slug)
     categories = Category.objects.all()
@@ -117,7 +118,7 @@ def listing_detail(request,listing_slug):
     }
     return render(request, 'listing/business_detail.html', context)
 
-
+@cache_page(60 * 15)
 def list_home(request):
     instance = Listing.objects.all()
     categories = Category.objects.all()
@@ -140,7 +141,7 @@ def list_home(request):
     return render(request,'listing/listing_home.html',content)
 
 
-
+@cache_page(60 * 15)
 def listing_search(request):
     qs = Listing.objects.order_by('company_name')
     categories = Category.objects.all()
@@ -234,7 +235,7 @@ class listdelete(LoginRequiredMixin,DeleteView):
     success_url = '../account/profile'
 
 
-
+@cache_page(60 * 15)
 def listtag(request, tags_slug):
     categories = Category.objects.all()
     tag_category = Tag.objects.all()
@@ -272,6 +273,7 @@ def listtag(request, tags_slug):
                }
     return render(request, 'listing/list_tag.html',context)
 
+@cache_page(60 * 15)
 def list_of_business_by_category(request, category_slug):
 
     instance = Listing.objects.all()
