@@ -32,11 +32,11 @@ class Listing(models.Model):
     logo = models.ImageField(upload_to='listing-logo/', blank=False)
     company_name = models.CharField(max_length=250, blank=False, unique=True)
     slug = models.SlugField(max_length=200,unique=True)
-    segment = models.ForeignKey(Listing_category, on_delete=models.CASCADE, default=1, )
+    segment = models.ForeignKey(Listing_category, on_delete=models.CASCADE,verbose_name='Business category',blank=True)
     phone_number = models.IntegerField()
     email = models.EmailField(max_length=100)
 
-    street = models.CharField(max_length=100, blank=False)
+    street = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100,blank=False)
     country = models.CharField(max_length=200, choices=(
                             ('Algeria', 'Algeria'),
@@ -87,7 +87,7 @@ class Listing(models.Model):
 
     motto = models.TextField(max_length=1000, blank=True)
     description = models.TextField(max_length=5000, blank=False)
-    tags = TaggableManager()
+    tags = TaggableManager(verbose_name='Products(separate with comma)')
 
     def __str__(self):
         return self.company_name

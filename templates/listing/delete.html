@@ -19,7 +19,8 @@ Register
 
 
    <div class="content boxed-comment clearfix">
-       <h4 align="center">Business Registration Form</h4>
+       <h2 align="center">Delete confirmation </h2>
+       <h4 >Are you sure you want to delete "{{ object.company_name}}"?</h4>
 
 
          <form class="big-contact-form" method="post" enctype="multipart/form-data">
@@ -30,8 +31,9 @@ Register
 
 
 
-     <button type="submit" class="btn btn-primary">Delete</button>
+     <button type="submit" class="btn btn-primary alert ">Delete</button>
              <input type="hidden" name="next" value="{{ next }}"> </form>
+       <button  class="btn btn-primary alert success"><a href="{% url 'profile' %}"> Return</a></button>
 
 
      </div>

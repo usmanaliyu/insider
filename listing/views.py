@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404,HttpResponse
+from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 from . models import Listing, Listing_category
 from Article.models import Article, Category
@@ -185,9 +185,13 @@ class listdelete(LoginRequiredMixin,DeleteView):
     template_name = 'listing/delete.html'
 
 
-    def form_valid(self, form):
-        if form.instance.user == self.request.user:
-            return super().form_valid(form)
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user == request.user:
+            self.object.delete()
+            messages.success(request, 'Listing deleted successfully!!')
+            return HttpResponseRedirect(self.get_success_url())
+
         else:
             raise PermissionDenied
 

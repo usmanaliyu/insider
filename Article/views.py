@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.contenttypes.models import ContentType
 from . models import Article, Category
 from comments.forms import CommentForm
@@ -6,6 +6,7 @@ from comments.models import Comment
 from taggit.models import Tag
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.db.models import Q
 
 
 from django.conf import settings
@@ -197,3 +198,22 @@ def instance_ranking(request):
     return render(request, 'blog/ranking.html',
                   {'section':'instances',
                    'most_viewed': most_viewed})
+
+
+def search(request):
+    if request.GET:
+        search_term = request.GET['search_term']
+        search_result = Article.objects.filter(
+            Q(title__icontains=search_term)
+
+
+
+
+        )
+        content ={
+            'search_term':search_term,
+            'instance':search_result,
+        }
+        return render(request,'blog/search.html',content)
+    else:
+        return redirect('home')

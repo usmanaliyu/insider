@@ -115,3 +115,9 @@ O
 templates/listing/list_tag.html,1/d/1d8003f850b7b5f6f77b05b766318ae7433db351
 M
 templates/user/user_list.html,d/2/d2474630763ab5a1868a0ef48969af5c1604693e
+M
+templates/listing/update.html,1/f/1f78c130280f7a7adbcebf64385fdf86ffd0f578
+M
+templates/listing/delete.html,a/f/afb3cfae45a231a7329e3c34aab58755fa22a97f
+@
+Article/tests.py,0/7/07a5a076bcd377c8d5106e4596cf841b38d6eedd
