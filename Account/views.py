@@ -3,9 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from . forms import UserRegistrationForm, UserUpdateForm
-from listing .models import Listing
+from listing .models import Listing, Listing_category
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, ListView
+from django.core.paginator import Paginator
+from django.contrib import messages
+
+
 
 
 # Create your views here.
@@ -21,14 +25,28 @@ def signup_done(request):
     return render(request,'registration/signup_done.html')
 
 
-
-
+@login_required()
 def profile(request):
     user = request.user
 
-    instance=Listing.objects.filter(user=request.user).order_by('company_name')
-    template = 'user/profile.html'
-    return render(request,template,{'instance':instance,'user':user})
+    instance_list=Listing.objects.filter(user=request.user).order_by('company_name')
+
+    paginator = Paginator(instance_list, 10)
+    page = request.GET.get('page')
+    instance = paginator.get_page(page)
+    listing_categories = Listing_category.objects.all()
+
+    content={
+        'instance':instance,
+        'user':user,
+        'listing_categories':listing_categories,
+
+    }
+
+    return render(request,'user/profile.html',content)
+
+
+
 
 
 
@@ -40,7 +58,7 @@ def profileupdate(request):
         u_form = UserUpdateForm(request.POST,instance=request.user)
         if u_form.is_valid():
             u_form.save()
-            messages.success(request, f'Your account is updated!')
+            messages.success(request, 'Your account is updated!')
             return redirect('home')
     else:
         u_form = UserUpdateForm(instance=request.user)

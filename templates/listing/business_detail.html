@@ -84,13 +84,11 @@
                         <div class="col-md-8">
                             <div class="content blog-list">
                                 <div class="blog-wrapper clearfix">
-                                    <div class="blog-meta">
-                                        <small><a href="#">{{ instance.country.name}}</a></small>
+                                    <div class="blog-meta list-inline">
+                                        <small><a href="#">{{ instance.country}}</a></small> |
+                                        <li ><span>{{ instance.segment }}</span></li>
                                         <h3>{{ instance.company_name}}</h3>
-                                        <ul class="list-inline">
 
-                                            <li><span>{{ instance.segment }}</span></li>
-                                        </ul>
                                     </div><!-- end blog-meta -->
 
                                     <div class="blog-media">
@@ -132,16 +130,19 @@
                                     </div>
                                     {% endfor %}
 
+                            </div><!-- end content -->
 
 
 
 
-                                        <hr class="invis">
+
+                                        <hr class="invisible">
+                            <div class="content boxed-comment clearfix">
 
                                         <form class="big-contact-form row" role="search" name="contactForm" id="contactForm" method="post">
                                             {% csrf_token %}
                                             <div class="col-md-12">
-                                                <h4>Add review</h4>
+                                                <h4 align="center">Add review</h4>
                                                 <p>Your email address will not be published. </p>
                                                 {{ comment_form|crispy }}
                                                  <input  class="btn btn-primary" type="submit" value="Review">
@@ -167,6 +168,8 @@
                     </div><!-- end row -->
                 </div><!-- end boxed -->
             </div><!-- end container -->
+
+
         </section>
 
 

@@ -132,6 +132,17 @@
 
 
 <br><br><br>
+{% if messages %}
+
+<div class="alert success ">
+
+  <span class="closebtn">&times;</span>
+    {% for message in messages %}
+    <p align="center"> <strong>Success!</strong> {{ message}}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
         {% block content %}
         {% endblock %}
 
@@ -243,6 +254,18 @@
     <script src="{% static 'js/custom.js' %}"></script>
     <!-- VIDEO BG PLUGINS -->
     <script src="{% static 'js/videobg.js' %}"></script>
+    <script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
 
 </body>
 </html>

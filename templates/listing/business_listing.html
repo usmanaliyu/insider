@@ -46,8 +46,10 @@
                 <div class="boxed boxedp4">
                     <div class="shop-top">
                         <div class="clearfix">
-                            <div class="pull-left">
-                                 <p>Page {{ instance.number }} of {{ instance.paginator.num_pages }}</p>
+                            <div >
+                                <p class="pull-left">  <a href="{% url 'list_create' %}" class="readmore " >Register your business</a></p>
+                                 <p class="text-right" >Page {{ instance.number }} of {{ instance.paginator.num_pages }}</p>
+
                             </div>
                             <div class="pull-right">
 

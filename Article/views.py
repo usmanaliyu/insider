@@ -5,6 +5,7 @@ from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 
 from django.conf import settings
@@ -168,6 +169,7 @@ def detail(request,article_slug):
 
 
         )
+        messages.success(request,'Comment added successfully!!')
 
 
     comments = instance.comments

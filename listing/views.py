@@ -8,8 +8,7 @@ from taggit.models import Tag
 from . choices import country_choice
 from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView
-
-
+from django.contrib import messages
 
 from django.conf import settings
 import redis
@@ -83,6 +82,7 @@ def listing_detail(request,listing_slug):
             content=content_data,
 
         )
+        messages.success(request, 'Review added successfully!!')
 
     comments = instance.comments
     context = {
