@@ -63,3 +63,5 @@ A
 contact/models.py,d/1/d15cea1403bb1f30a9a5a506c3b2a2299cb685c5
 N
 templates/contact/contact.html,2/9/29a9422d4f835eeb5a690778ada306a668ad2dcb
+U
+%templates/listing/listing_search.html,d/1/d10cb31de853944176143ec1cdec7d56280bc29e

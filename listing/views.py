@@ -6,6 +6,7 @@ from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
 from . choices import country_choice
+from django.core.paginator import Paginator
 
 from django.conf import settings
 import redis
@@ -20,14 +21,19 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 # Create your views here.
 
 def Listing_list(request):
-    instance = Listing.objects.all()
+    instance_list = Listing.objects.all()
     categories = Category.objects.all()
+
+    paginator = Paginator(instance_list, 10)
+    page = request.GET.get('page')
+    instance = paginator.get_page(page)
     listing_categories = Listing_category.objects.all()
 
     content ={
         'instance':instance,
         'listing_categories':listing_categories,
         'categories':categories,
+        'country_choice': country_choice,
     }
     return render(request,'listing/business_listing.html',content)
 
@@ -90,11 +96,14 @@ def listing_detail(request,listing_slug):
 
 def list_home(request):
     instance = Listing.objects.all()
+    categories = Category.objects.all()
+
 
 
     content ={
         'instance':instance,
         'country_choice':country_choice,
+        'categories':categories,
 
     }
     return render(request,'listing/listing_home.html',content)
@@ -103,6 +112,10 @@ def list_home(request):
 
 def listing_search(request):
     qs = Listing.objects.order_by('company_name')
+    categories = Category.objects.all()
+    listing_categories = Listing_category.objects.all()
+
+    Keywords = request.GET['Keywords']
 
     if 'Keywords' in request.GET:
         keywords = request.GET['Keywords']
@@ -117,6 +130,10 @@ def listing_search(request):
     content ={
         'instance':qs,
         'country_choice':country_choice,
+        'Keywords': Keywords,
+        'categories':categories,
+        'listing_categories':listing_categories,
+
 
     }
     return render(request,'listing/listing_search.html',content)

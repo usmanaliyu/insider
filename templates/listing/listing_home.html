@@ -7,12 +7,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message event-title text-center">
-                            <h3>Edulogy Meetup Event 2018</h3>
+                            <h3>Explore through thousands of African startups</h3>
                             <p>21 - 26 Aug, 2018, San Francisco, CA - Limited number of guests</p>
-                            <a href="#" class="btn btn-primary">GET TICKETS</a>
+                            <a href="{% url 'listing_list' %}" class="btn btn-primary">View Startups</a>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
+                <div class="slider-bottom">
+                <span>Search <i class="fa fa-angle-down"></i></span>
+            </div>
             </div><!-- end container -->
         </section><!-- end section -->
 
@@ -27,10 +30,10 @@
 
                 <div class="row callout">
                     <div class="newsletter-widget" align="center">
-                           <p> Search Startups near you</p>
+                           <p> Search Startups </p>
                                 <form class="form-inline" role="search" action="{% url 'listing_search' %}">
                                     <div class="form-1">
-                                        <input type="text" class="btn btn-primary  form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
+                                        <input type="text" class="  form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
 
                                         <div class="btn btn-primary ">
                                             <select class="btn btn-primary" name="country">
@@ -52,6 +55,7 @@
                                 </form>
 
                             </div><!-- end newsletter -->
+                    <h1 class="text-center"> <small> <a href="{% url 'listing_list' %}" class="readmore " >View All</a></small></h1>
                 </div><!-- end row -->
                 </a>
             </div><!-- end container -->

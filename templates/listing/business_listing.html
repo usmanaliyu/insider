@@ -3,34 +3,38 @@
 {% block content %}
 
 
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Begin # DIV Form -->
-                    <div id="div-forms">
-                        <form id="login-form">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="flaticon-add" aria-hidden="true"></span>
-                            </button>
-                            <div class="modal-body">
-                                <input class="form-control" type="text" placeholder="What you are looking for?" required>
-                            </div>
-                        </form><!-- End # Login Form -->
-                    </div><!-- End # DIV Form -->
-                </div>
-            </div>
-        </div>
+
 
         <section class="section lb p120">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>Business Listing s</h3>
+                            <h3>Startups</h3>
                             <ul class="breadcrumb">
                                 <li><a href="javascript:void(0)">Edulogy</a></li>
-                                <li class="active">Shop</li>
+                                <li class="active">Startups</li>
                             </ul>
+                             <div class="newsletter-widget" align="center">
+
+                                <form class="form-inline" role="search" action="{% url 'listing_search' %}">
+                                    <div class="form-1">
+                                        <input type="text" class=" form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
+
+                                        <div class="btn btn-primary ">
+                                            <select class="btn btn-primary" name="country">
+                                            <option selected="True" disabled="disabled">Country (All)</option>
+                                                {% for key,value in country_choice.items %}
+
+                                                <option value="{{ key }}">{{ value }}</option>
+
+                                                {% endfor %}
+                                         </select>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div><!-- end newsletter -->
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -43,15 +47,10 @@
                     <div class="shop-top">
                         <div class="clearfix">
                             <div class="pull-left">
-                                <p> Showing 1–9 of 11 results</p>
+                                 <p>Page {{ instance.number }} of {{ instance.paginator.num_pages }}</p>
                             </div>
                             <div class="pull-right">
-                            <select class="selectpicker">
-                                <option>Price - High to Low</option>
-                                <option>Price - Low to High</option>
-                                <option>Newest Items</option>
-                                <option>Older Items</option>
-                            </select>
+
                             </div>
                         </div>
                     </div>
@@ -66,13 +65,13 @@
                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                 {% endthumbnail %}
                                     <div class="magnifier">
-                                        <a href="shop-single.html" title=""><i class="flaticon-add"></i></a>
+                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{Listing.country}}</a>
                                     </div>
                                 </div>
                                 <!-- end image-wrap -->
-                                <div class="course-details shop-box text-center">
+                                <div class=" text-center">
                                     <h4>
-                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name}}</a>
+                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
                                         <small>{{ Listing.segment }}</small>
                                     </h4>
                                 </div>
@@ -90,12 +89,19 @@
                     <div class="row text-center">
                         <div class="col-md-12">
                             <ul class="pagination">
-                                <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
-                                <li class="active"><a href="javascript:void(0)">1</a></li>
-                                <li><a href="javascript:void(0)">2</a></li>
-                                <li><a href="javascript:void(0)">3</a></li>
-                                <li><a href="javascript:void(0)">...</a></li>
-                                <li><a href="javascript:void(0)">&raquo;</a></li>
+                                {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page=1">&laquo;</a></li>
+                                        {% endif %}
+                                        {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page={{ instance.previous_page_number }}">{{ instance.previous_page_number }}</a></li>
+                                        <li class="active"><a href="">{{instance.number}}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.next_page_number }}">{{ instance.next_page_number }}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.paginator.num_pages }}">&raquo;</a></li>
+                                        {% endif %}
                             </ul>
                         </div><!-- end col -->
                     </div><!-- end row -->
