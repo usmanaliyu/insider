@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile update
+{% endblock %}
+
+
+{% block content %}
+
+<section class="section gb ">
+            <div class="container">
+                <div class="boxed">
+                    <div class="row">
+                        <div class="col-md-8">
+
+
+
+
+   <div class="content boxed-comment clearfix">
+
+      <form method="post" action=""><br><br>
+
+		      <h4 align="center">Profile Update</h4>
+ {% csrf_token %}
+    {{ u_form|crispy}}
+                   {{p_form|crispy}}
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+ </form>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+{% endblock %}

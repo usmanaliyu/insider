@@ -107,17 +107,21 @@
                             <li class="iconitem"><a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-search"></i></a></li>
 
 
+
+                            {% if request.user.is_authenticated %}
                             <li class="dropdown hassubmenu iconitem">
-                                <a href="#" class="dropdown-toggle shopicon" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in"></i> &nbsp;(1) </a>
+                                <a href="#" class="dropdown-toggle shopicon" data-toggle="dropdown" role="button" aria-expanded="false">Account </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="blog.html">Blog Right Sidebar</a></li>
-                                    <li><a href="blog-1.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-2.html">Blog Grid Sidebar</a></li>
-                                    <li><a href="blog-3.html">Blog Grid Fullwidth</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                    <li><a href="{% url 'profile' %}" >Account</a></li>
+                                    <li><a href="{% url 'profile' %}">Dashboard</a></li>
+                                    <li><a href="{% url 'profile' %}">Notifications</a></li>
+                                    <li><a href="{% url 'profileupdate' %}">Profile update</a></li>
+                                    <li><a href="{% url 'logout' %}" title="">Logout</a></li>
                                 </ul>
                             </li>
-
+                            {% else %}
+                            <li> <a href="{% url 'login' %}" class=" shopicon" ><i class="fa fa-sign-in"></i></a></li>
+                             {% endif %}
                         </ul>
                     </div>
                 </nav><!-- end navbar -->

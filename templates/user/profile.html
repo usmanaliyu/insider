@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+{{user.username}}
+{% endblock %}
+
+
+{% block content %}
+<section class="section gb ">
+            <div class="container">
+                <div class="boxed">
+                    <div class="row">
+                        <div class="col-md-8">
+<div class="container">
+	<div class="row no-gutters">
+
+
+<p> <br><br>Welcome {{user.username}} </p>
+
+                    </div>
+                </div>
+            </div>
+</section>
+
+{% endblock %}

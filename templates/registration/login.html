@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<section class="section gb ">
+            <div class="container">
+                <div class="boxed">
+                    <div class="row">
+                        <div class="col-md-8">
+
+
+
+
+   <div class="content boxed-comment clearfix">
+       <h4 align="center">Please login</h4>
+
+
+         <form class="big-contact-form" method="post" action="{% url 'login' %}">
+
+
+      {% csrf_token %}
+      {{ form|crispy}}
+      <p><a href="{% url 'password_reset' %}">Lost password? </a>| <a href="{% url 'signup' %}">SignUp </a></p>
+
+
+     <button type="submit" class="btn btn-primary">Login</button>
+             <input type="hidden" name="next" value="{{ next }}"> </form>
+
+
+     </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+{% endblock %}

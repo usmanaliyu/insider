@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'listing',
     'django_countries',
     'contact',
+    'Account'
 
 ]
 
@@ -140,3 +141,15 @@ REDIS_PORT = 6379
 REDIS_DB = 0
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL ='home'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_HOST_USER = 'usman.abbati@gmail.com'
+EMAIL_HOST_PASSWORD = 'abbatibabu'
+EMAIL_PORT = 587
+EMAIL_USER_TLS = True
