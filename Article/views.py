@@ -119,6 +119,8 @@ def detail(request,id):
         content_type = ContentType.objects.get(model=c_type)
         obj_id = form.cleaned_data.get('object_id')
         content_data = form.cleaned_data.get('content')
+        user_data = form.cleaned_data.get('user')
+        email_data = form.cleaned_data.get('email')
 
         parent_obj=None
         try:
@@ -133,11 +135,12 @@ def detail(request,id):
                 parent_obj = parent_qs.first()
 
         new_comment, created = Comment.objects.get_or_create(
-            user = request.user,
+            user = user_data,
+            email=email_data,
             content_type = content_type,
             object_id = obj_id,
             content = content_data,
-            parent = parent_obj
+
 
         )
 

@@ -31,8 +31,7 @@
                                     <div class="blog-meta">
                                         <small><a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a></small>
 
-                                        <p>{{ total_views }}<br>
-                                        view{{ total_views|pluralize }}</p>
+
 
                                         <h3>{{ instance.title }}</h3>
                                         <ul class="list-inline">
@@ -408,11 +407,10 @@
 
 
                         <div class="sidebar col-md-4">
-                            <div class="widget clearfix">
-                                <div class="banner-widget">
-                                    <img src="upload/banner.jpeg" alt="" class="img-responsive img-rounded">
-                                </div>
-                            </div>
+
+                                    <p>{{ total_views }}
+                                        view{{ total_views|pluralize }}</p>
+
 
                             <div class="widget clearfix">
                                 <h3 class="widget-title">Popular Posts</h3>
