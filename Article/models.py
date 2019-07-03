@@ -2,11 +2,30 @@ from django.db import models
 from django.conf import settings
 from comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
+
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=250, blank=True)
+    slug = models.SlugField(max_length=250)
+
+    class Meta:
+        ordering =['name']
+        verbose_name = 'category'
+
+    def get_absolute_url(self):
+        return reverse('category_list', args=[self.slug])
+
+    def __str__(self):
+        return self.name
+
 class Article(models.Model):
+    category = models.ForeignKey(Category,on_delete=models.CASCADE, default=1,)
+    preview_image = models.ImageField(upload_to='upload/',blank=True)
     title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=250, unique=True)
     summary = models.TextField(max_length=250, blank=True)
     title_body1 = models.TextField(max_length=1000, blank=True)
     title_body2 = models.TextField(max_length=1000, blank=True)

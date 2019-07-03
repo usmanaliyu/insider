@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>Technology</h3>
+                            <h3>{{ category.name }}</h3>
                             <ul class="breadcrumb">
                                 <li><a href="javascript:void(0)">Topics</a></li>
-                                <li class="active">Technology</li>
+                                <li class="active">{{ category.name }}</li>
                             </ul>
                         </div>
                     </div><!-- end col -->
@@ -25,6 +25,10 @@
 <hr>
 
                            <div class="row">
+
+
+                               {% if instance %}
+                                {% for Article in instance %}
                             <div class="col-md-4 hidden-sm hidden-xs">
                               <div class="image-wrap entry">
                                   <img src="{% static 'upload/blog_03.jpeg' %}" alt="" class="img-responsive">
@@ -38,20 +42,22 @@
                                 <div class="blog-wrapper clearfix">
                                             <div class="blog-meta">
 
-                                                <small><a href="#">Tips &amp; Tricks</a></small>
+                                                <small><a href="#">{{ category.name }}</a></small>
                                             </div><!-- end blog-meta -->
 
                                             <div class="blog-desc-big">
                                                 <p >
-                                                    <a href="#" class="lead">factors influencing growth of an Enterprise</a>
-                                                    Curabitur ut eros orci. Mauris non egestas sem.
-                                                    Fusce mattis tortor sit amet blandit sodales. Nam finibus fausodales. Nam finibus fau
-                                                    sodales. Nam finibus fausodales. Nam finibus fau...
+                                                    <a href="#" class="lead">{{ Article.title}}</a>
+                                                    {{ Article.summary }}
                                                     </p>
 
                                             </div><!-- end desc -->
                                         </div>
                             </div><!-- end col -->
+                               {% endfor %}
+                               {% endif %}
+
+
                         </div><!-- end row --><hr>
 
 

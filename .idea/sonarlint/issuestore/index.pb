@@ -1,8 +1,6 @@
 
 ?
 insider/urls.py,b/5/b5d0aa9777a51e3e71bc3a4706574bb9380ec56a
-D
-templates/index.html,f/6/f69b8ce2e31684ae06f1b3e84821e07e3dfddb2f
 C
 templates/base.html,d/a/da7c237b85a69c00a9ab8c189bf63e22070fcac3
 C
@@ -25,3 +23,7 @@ Q
 !templates/blog/articles_list.html,5/5/5594957ed1e437fd7cf00f0846fc06e159b34429
 K
 templates/blog/contact.html,c/d/cd5a06fbf9adc4a548dc7f98d290e4270cac7771
+A
+Article/models.py,9/a/9a45e67c23cdc37d109efdc4a90ad5782d4dd10e
+@
+Article/admin.py,d/e/de082682b659b96790e62024b9541314029d4a7c

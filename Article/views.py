@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404, HttpResponseRed
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView
 from django.contrib.contenttypes.models import ContentType
-from . models import Article
+from . models import Article, Category
 from django.db.models import Q
 from comments.forms import CommentForm
 from comments.models import Comment
@@ -19,6 +19,24 @@ def articles(request):
 
 def detail(request):
     return render(request,'blog/detail_view.html')
+
+def list_of_articles_by_category(request, category_slug):
+    categories = Category.objects.all()
+    instance = Article.objects.all()
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        instance = instance.filter(category=category)
+
+
+    context = {
+        'categories':categories,
+        'instance':instance,
+        'category':category
+               }
+    return render(request, 'blog/category_list.html',context)
+
+
+
 
 def categorylist(request):
     return render(request,'blog/category_list.html')
