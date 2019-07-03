@@ -3,7 +3,7 @@
 {% block content %}
 
 
-        <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
+        <section class="section db p120" style="background-image:url('{% if instance.preview_image %} {{ instance.preview_image.url }} {% endif %}');>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12"><br><br>
@@ -28,31 +28,312 @@
                             <div class="content blog-list">
                                 <div class="blog-wrapper clearfix">
                                     <div class="blog-meta">
-                                        <small><a href="#">Tips & Tricks</a></small>
+                                        <small><a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a></small>
                                         <h3>{{ instance.title }}</h3>
                                         <ul class="list-inline">
-                                            <li>6 hours ago</li>
+                                            <li>{{ instance.pub_date}}</li>
                                             <li><span>written by</span> <a href="#">Edulogy Team</a></li>
                                         </ul>
                                     </div><!-- end blog-meta -->
 
                                     <div class="blog-media">
-                                        <img src="{% static 'upload/blog_01.jpg' %}" alt="" class="img-responsive img-rounded">
+                                        <img src=" {% if instance.preview_image %} {{ instance.preview_image.url }} {% endif %}" alt="" class="img-responsive img-rounded">
                                     </div><!-- end media -->
 
                                     <div class="blog-desc-big">
-                                        <p class="lead">You can get all the icon versions by checking out our standard license that come with every free icons..</p>
-                                        <p>Integer eu urna sit amet dolor fringilla vulputate. Sed diam nunc, pellentesque sed lobortis non, tincidunt et sem. Sed sollicitudin elementum mi eget lobortis. Aliquam molestie rhoncus nisl, vitae molestie leo imperdiet ac. Aliquam diam est, aliquam vitae tristique nec, pretium a libero. Vivamus tempor sed turpis sit amet malesuada.</p>
 
-                                        <p> Cras eu lacus et nulla dignissim <a href="#">ultrices</a>. Duis ullamcorper finibus quam, sed convallis massa pharetra nec. Duis nec molestie dolor. Nam augue neque, efficitur vel lacus sit amet, consequat pharetra massa. Proin nunc magna, congue vitae justo ut, dignissim dapibus enim. Integer sollicitudin lacus a iaculis molestie. Donec quis consequat erat. Cras vitae consequat sem. Integer eleifend purus congue, gravida sem eu, pharetra sapien. Nunc venenatis, lacus id pretium volutpat, augue eros accumsan leo, eu condimentum velit nulla nec sem. Donec interdum bibendum eros, ut facilisis nunc malesuada id. Nulla quis ex non magna sollicitudin sodales vestibulum nec massa. Nullam ut nibh quis est aliquet viverra mattis eu ligula. Pellentesque dui mi, ultricies ut velit id, iaculis lacinia est. </p>
+                                        <p>{{ instance.title_body1 }}</p>
+                                        <p>{{ instance.title_body2 }}</p>
+                                        <p>{{ instance.title_body3 }}</p>
+<h4><big>{{ instance.sub1 }}</big></h4>
+<h5><big>{{ instance.sub1_child1 }}</big></h5>
+<p>{{ instance.sub1_child1_body }}</P>
 
-                                        <blockquote class="text-center">
-                                            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-                                        </blockquote>
+  {% if instance.sub1_child1_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub1_child1_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
 
-                                        <p>Integer eu urna <a href="#">sit amet dolor fringilla vulputate</a>. Sed diam nunc, pellentesque sed lobortis non, tincidunt et sem. Sed sollicitudin elementum mi eget lobortis. Aliquam molestie rhoncus nisl, vitae molestie leo imperdiet ac. Aliquam diam est, aliquam vitae tristique nec, pretium a libero. Vivamus tempor sed turpis sit amet malesuada.</p>
+<h5><big>{{ instance.sub1_child2 }}</big></h5>
+<p>{{ instance.sub1_child2_body }}</P>
 
-                                        <p> Quisque at vestibulum neque. Duis eget sapien ac quam interdum euismod. Mauris blandit tincidunt neque, vitae vestibulum tortor dapibus non. Nunc eu sollicitudin diam. Proin vel erat vitae augue eleifend convallis. Curabitur ut risus id ex finibus rhoncus sit amet a libero. Aenean a turpis eget nisi posuere tempor. Aliquam iaculis sem eros. Fusce nec erat eget sem aliquam congue quis vitae mi. Praesent varius dictum cursus. </p>
+  {% if instance.sub1_child2_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub1_child2_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub1_child3 }}</big></h5>
+<p>{{ instance.sub1_child3_body }}</P>
+
+  {% if instance.sub1_child3_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub1_child3_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub1_child4 }}</big></h5>
+<p>{{ instance.sub1_child4_body }}</P>
+
+  {% if instance.sub1_child4_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub1_child4_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub1_child5 }}</big></h5>
+<p>{{ instance.sub1_child5_body }}</P>
+
+  {% if instance.sub1_child5_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub1_child5_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+
+  {% if instance.blockquote1 %}
+<blockquote class="text-center">
+  {{ instance.blockquote1}}
+</blockquote>
+{% endif %}
+
+
+
+
+
+
+
+<h4><big>{{ instance.sub2 }}</big></h4>
+<h5><big>{{ instance.sub2_child1 }}</big></h5>
+<p>{{ instance.sub2_child1_body }}</P>
+
+  {% if instance.sub2_child1_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub2_child1_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub2_child2 }}</big></h5>
+<p>{{ instance.sub2_child2_body }}</P>
+
+  {% if instance.sub2_child2_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub2_child2_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub2_child3 }}</big></h5>
+<p>{{ instance.sub2_child3_body }}</P>
+
+  {% if instance.sub2_child3_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub2_child3_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub2_child4 }}</big></h5>
+<p>{{ instance.sub2_child4_body }}</P>
+
+  {% if instance.sub2_child4_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub2_child4_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub2_child5 }}</big></h5>
+<p>{{ instance.sub2_child5_body }}</P>
+
+  {% if instance.sub2_child5_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub2_child5_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+
+{% if instance.blockquote2 %}
+<blockquote class="text-center">
+  {{ instance.blockquote2}}
+</blockquote>
+{% endif %}
+
+
+
+
+
+
+<h4><big>{{ instance.sub3 }}</big></h4>
+<h5><big>{{ instance.sub3_child1 }}</big></h5>
+<p>{{ instance.sub3_child1_body }}</P>
+
+  {% if instance.sub3_child1_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub3_child1_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub3_child2 }}</big></h5>
+<p>{{ instance.sub3_child2_body }}</P>
+
+  {% if instance.sub3_child2_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub3_child2_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub3_child3 }}</big></h5>
+<p>{{ instance.sub3_child3_body }}</P>
+
+  {% if instance.sub3_child3_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub3_child3_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub3_child4 }}</big></h5>
+<p>{{ instance.sub3_child4_body }}</P>
+
+  {% if instance.sub3_child4_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub3_child4_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub3_child5 }}</big></h5>
+<p>{{ instance.sub3_child5_body }}</P>
+
+  {% if instance.sub3_child5_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub3_child5_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+
+{% if instance.blockquote3 %}
+<blockquote class="text-center">
+  {{ instance.blockquote3 }}
+</blockquote>
+{% endif %}
+
+
+
+<h4><big>{{ instance.sub4 }}</big></h4>
+<h5><big>{{ instance.sub4_child1 }}</big></h5>
+<p>{{ instance.sub4_child1_body }}</P>
+
+  {% if instance.sub4_child1_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub4_child1_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub4_child2 }}</big></h5>
+<p>{{ instance.sub4_child2_body }}</P>
+
+  {% if instance.sub4_child2_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub4_child2_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub4_child3 }}</big></h5>
+<p>{{ instance.sub4_child3_body }}</P>
+
+  {% if instance.sub4_child3_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub4_child3_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub4_child4 }}</big></h5>
+<p>{{ instance.sub4_child4_body }}</P>
+
+  {% if instance.sub4_child4_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub4_child4_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub4_child5 }}</big></h5>
+<p>{{ instance.sub4_child5_body }}</P>
+
+  {% if instance.sub4_child5_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub4_child5_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+
+
+{% if instance.blockquote4 %}
+<blockquote class="text-center">
+  {{ instance.blockquote4}}
+</blockquote>
+{% endif %}
+
+
+
+
+
+<h4><big>{{ instance.sub5 }}</big></h4>
+<h5><big>{{ instance.sub5_child1 }}</big></h5>
+<p>{{ instance.sub5_child1_body }}</P>
+
+  {% if instance.sub5_child1_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub5_child1_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub5_child2 }}</big></h5>
+<p>{{ instance.sub5_child2_body }}</P>
+
+  {% if instance.sub5_child2_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub5_child2_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub5_child3 }}</big></h5>
+<p>{{ instance.sub5_child3_body }}</P>
+
+  {% if instance.sub5_child3_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub5_child3_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub5_child4 }}</big></h5>
+<p>{{ instance.sub5_child4_body }}</P>
+
+  {% if instance.sub5_child4_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub5_child4_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+
+<h5><big>{{ instance.sub5_child5 }}</big></h5>
+<p>{{ instance.sub5_child5_body }}</P>
+
+  {% if instance.sub5_child5_image %}
+<div class="blog-media">
+<img src="  {{ instance.sub5_child5_image.url }} " alt="" class="img-responsive img-rounded">
+</div><!-- end media -->
+{% endif %}
+                                        {% if instance.blockquote5 %}
+<blockquote class="text-center">
+  {{ instance.blockquote5}}
+</blockquote>
+{% endif %}
+
+
+
+
+
+
+
+
+
 
                                         <hr class="invis">
 
