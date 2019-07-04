@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>{{ category.name }}</h3>
+                            <h3>{{ tag.name }}</h3>
                             <ul class="breadcrumb">
                                 <li><a href="javascript:void(0)">Topics</a></li>
-                                <li class="active">{{ category.name }}</li>
+                                <li class="active">{{ tag.name }}</li>
                             </ul>
                         </div>
                     </div><!-- end col -->
@@ -27,7 +27,7 @@
                            <div class="row">
 
 
-                               {% if instance %}
+
                                 {% for Article in instance %}
                             <div class="col-md-4 hidden-sm hidden-xs">
                               <div class="image-wrap entry">
@@ -42,12 +42,11 @@
                                 <div class="blog-wrapper clearfix">
                                             <div class="blog-meta">
 
-                                                <small><a href="#">{{ category.name }}</a></small>
+                                                <small><a href="#">{{ Article.category }}</a></small>
                                             </div><!-- end blog-meta -->
 
                                             <div class="blog-desc-big">
-
-                                                    <h1 href="{% url 'detail' Article.id %}" class="lead">{{ Article.title}}</h1>
+                                                 <h1 href="{% url 'detail' Article.id %}" class="lead">{{ Article.title}}</h1>
                                                     <p>
                                                     {{ Article.summary }}
                                                     </p><hr>
@@ -56,7 +55,7 @@
                                         </div>
                             </div><!-- end col -->
                                {% endfor %}
-                               {% endif %}
+
 
 
                         </div><!-- end row --><hr>
@@ -156,16 +155,12 @@
                                 <h3 class="widget-title">Popular Tags</h3>
                                 <div class="tags-widget">
                                     <ul class="list-inline">
-                                        <li><a href="#">course</a></li>
-                                        <li><a href="#">web design</a></li>
-                                        <li><a href="#">development</a></li>
-                                        <li><a href="#">language</a></li>
-                                        <li><a href="#">teacher</a></li>
-                                        <li><a href="#">speaking</a></li>
-                                        <li><a href="#">material</a></li>
-                                        <li><a href="#">css3</a></li>
-                                        <li><a href="#">html</a></li>
-                                        <li><a href="#">learning</a></li>
+                                        {% for tags in Tag %}
+                                        <li><a href="{% url 'tagged' tag.slug %}">{{ tag.name}}</a></li>
+
+                                        <li><a href="#">No tag avalable</a></li>
+                                        {% endfor %}
+
                                     </ul>
                                 </div><!-- end list-widget -->
                             </div><!-- end widget -->

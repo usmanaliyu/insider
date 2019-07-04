@@ -3,6 +3,7 @@ from django.conf import settings
 from comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -24,6 +25,7 @@ class Category(models.Model):
 class Article(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE, default=1,)
     preview_image = models.ImageField(upload_to='upload/',blank=True)
+    tags = TaggableManager()
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=250, unique=True)
     summary = models.TextField(max_length=250, blank=True)

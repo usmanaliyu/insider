@@ -6,6 +6,7 @@ from . models import Article, Category
 from django.db.models import Q
 from comments.forms import CommentForm
 from comments.models import Comment
+from taggit.models import Tag
 
 # Create your views here.
 
@@ -36,6 +37,42 @@ def list_of_articles_by_category(request, category_slug):
     return render(request, 'blog/category_list.html',context)
 
 
+class ToggleMixen(object):
+    def get_context_data(self,**kwargs):
+        context = super(ToggleMixen,self).get_context_data(**kwargs)
+        context['tags']= Tag.objects.all()
+        return context
+
+class tag_list_view(ToggleMixen,ListView):
+    model = Article
+    template_name = 'blog/tag_list_view.html'
+    context_object_name = 'instance'
+
+    def get_queryset(self):
+        return Article.objects.filter(tags__slug=self.kwargs.get('slug'))
+
+
+
+def tagged(request, tags_slug):
+    categories = Tag.objects.all()
+    instance = Article.objects.all()
+
+
+    if tags_slug:
+        tags = get_object_or_404(Tag, slug=tags_slug)
+        instance = instance.filter(tags=tags)
+
+
+    context = {
+        'categories':categories,
+        'instance':instance,
+        'tag':tags
+
+               }
+    return render(request, 'blog/tag_list_view.html',context)
+
+
+
 
 
 def categorylist(request):
@@ -56,6 +93,7 @@ def contact(request):
 
 def detail(request,id):
     instance = get_object_or_404(Article,pk=id)
+
 
     initial_data={
         'content_type': instance.get_content_type,

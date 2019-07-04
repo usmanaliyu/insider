@@ -97,10 +97,32 @@
                                             <div class="blog-desc-big">
                                                 <p class="lead"><a href="{% url 'detail' Article.id %}"> {{ Article.title }}</a></p>
                                                 <p> {{ Article.summary }}</p>
+
+
+                                                {% if Article.tags %}
+                        <div class="widget clearfix">
+
+                            <div class="tags-widget">
+                                <ul class="list-inline">
+                                    {% for tag in Article.tags.all %}
+                                    <li><a href="{% url 'tagged' tag.slug%}">{{ tag.name}}</a></li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div><!-- end list-widget -->
+                        </div><!-- end widget -->
+                            {% endif %}
+
+
+
+
+
                                                 <hr class="invisible">
+
                                             </div><!-- end desc -->
                                         </div>
                             </div><!-- end col -->
+
                         </div><!-- end row --><hr>
                         {% endfor %}
                         {% endif %}
