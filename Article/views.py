@@ -15,8 +15,11 @@ class home(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'instance'
 
-def articles(request):
-    return render(request,'blog/articles_list.html')
+class Articles_list(ListView):
+    model = Article
+    template_name = 'blog/articles_list.html'
+    context_object_name = 'instance'
+    ordering = ['-pub_date']
 
 def detail(request):
     return render(request,'blog/detail_view.html')
