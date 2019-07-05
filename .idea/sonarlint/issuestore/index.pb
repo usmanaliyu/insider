@@ -37,3 +37,5 @@ A
 comments/forms.py,8/a/8a118516577043264d6575fedb60fbdb291a6dbe
 A
 comments/views.py,c/a/ca0211ff5267edcd08a9a627ea5ec4d268b7303c
+P
+ templates/blog/article_list.html,2/4/2403b9af38c592071596f697e9e9ed67dc217667

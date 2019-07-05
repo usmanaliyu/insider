@@ -110,9 +110,9 @@
                                 <h3 class="widget-title">All Categories</h3>
 
                                     <ul class="list-inline">
-                                        {% for category in instance %}
+                                        {% for category in categories %}
                                            <div class="blog-meta">
-                                                <small><a href="">{{ instance.category.name }}</a></small>
+                                               <li> <small><a href="{% url 'category_list' category.slug %}">{{category.name }}</a></small> </li>
                                             </div><!-- end blog-meta -->
                                         {% endfor %}
                                     </ul>

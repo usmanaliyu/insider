@@ -110,7 +110,7 @@
                                 <h3 class="widget-title">All Tags</h3>
                                 <div class="tags-widget">
                                     <ul class="list-inline">
-                                        {% for tags in categories %}
+                                        {% for tags in tag_category %}
                                         <li><a href="{% url 'tagged' tags.slug %}">{{ tags.name}}</a></li>
 
                                         {% endfor %}

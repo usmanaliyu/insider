@@ -20,23 +20,35 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 
 # Create your views here.
 
-class home(ListView):
-    model = Article
-    template_name = 'blog/home.html'
-    context_object_name = 'instance'
+def home(request):
+    instance = Article.objects.all()
+    categories = Category.objects.all()
 
-class Articles_list(ListView):
-    model = Article
-    template_name = 'blog/article_list.html'
-    context_object_name = 'instance'
-    ordering = ['-pub_date']
+    content = {
+        'instance': instance,
+        'categories': categories,
+    }
+    return render(request, 'blog/home.html', content)
 
-def detail(request):
-    return render(request,'blog/detail_view.html')
+
+
+def Articles_list(request):
+    instance= Article.objects.all()
+    categories = Category.objects.all()
+
+    content ={
+        'instance':instance,
+        'categories':categories,
+    }
+    return render(request,'blog/article_list.html',content)
+
+
 
 def list_of_articles_by_category(request, category_slug):
-    categories = Category.objects.all()
+
     instance = Article.objects.all()
+    categories = Category.objects.all()
+
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         instance = instance.filter(category=category)
@@ -50,24 +62,12 @@ def list_of_articles_by_category(request, category_slug):
     return render(request, 'blog/category_list.html',context)
 
 
-class ToggleMixen(object):
-    def get_context_data(self,**kwargs):
-        context = super(ToggleMixen,self).get_context_data(**kwargs)
-        context['tags']= Tag.objects.all()
-        return context
-
-class tag_list_view(ToggleMixen,ListView):
-    model = Article
-    template_name = 'blog/tag_list_view.html'
-    context_object_name = 'instance'
-
-    def get_queryset(self):
-        return Article.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
 
 def tagged(request, tags_slug):
-    categories = Tag.objects.all()
+    categories = Category.objects.all()
+    tag_category = Tag.objects.all()
     instance = Article.objects.all()
 
 
@@ -81,6 +81,7 @@ def tagged(request, tags_slug):
         'categories':categories,
         'instance':instance,
         'tag':tags,
+        'tag_category':tag_category,
 
 
                }
@@ -90,14 +91,23 @@ def tagged(request, tags_slug):
 
 
 
-def categorylist(request):
-    return render(request,'blog/category_list.html')
+
 
 def events(request):
-    return render(request,'blog/events.html')
+    categories = Category.objects.all()
+
+    content={
+        'categories':categories,
+    }
+    return render(request,'blog/events.html',content)
 
 def contact(request):
-    return render(request,'blog/contact.html')
+    categories = Category.objects.all()
+
+    content = {
+        'categories': categories,
+    }
+    return render(request,'blog/contact.html',content)
 
 
 

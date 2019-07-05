@@ -92,11 +92,11 @@
                             <li class="dropdown hassubmenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Topics <span class="fa fa-angle-down"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="">Technology</a></li>
-                                    <li><a href="blog-1.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-2.html">Blog Grid Sidebar</a></li>
-                                    <li><a href="blog-3.html">Blog Grid Fullwidth</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                    {% for category in categories %}
+
+                                    <li> <a href="{% url 'category_list' category.slug %}">{{category.name }}</a></li>
+
+                                    {% endfor %}
                                 </ul>
                             </li>
                             <li><a href="{% url 'events' %}">Events</a></li>
