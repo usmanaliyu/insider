@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tagline-message page-title text-center">
-                            <h3>{{ category.name }}</h3>
+                            <h3>Articles</h3>
                             <ul class="breadcrumb">
                                 <li><a href="javascript:void(0)">Topics</a></li>
-                                <li class="active">{{ category.name }}</li>
+                                <li class="active">Articles </li>
                             </ul>
                         </div>
                     </div><!-- end col -->
@@ -27,7 +27,7 @@
                            <div class="row">
 
 
-                               {% if instance %}
+
                                 {% for Article in instance %}
                             <div class="col-md-4 hidden-sm hidden-xs">
                               <div class="image-wrap entry">
@@ -42,21 +42,34 @@
                                 <div class="blog-wrapper clearfix">
                                             <div class="blog-meta">
 
-                                                <small><a href="#">{{ category.name }}</a></small>
+                                                <small><a href="{{ Article.category.get_absolute_url }}">{{ Article.category }}</a></small>
                                             </div><!-- end blog-meta -->
 
                                             <div class="blog-desc-big">
-
-                                                   <h1></h1> <a href="{% url 'detail' Article.id %}" class="lead">{{ Article.title}}</a></h1>
+                                                <h1></h1> <a href="{% url 'detail' Article.id %}" class="lead">{{ Article.title}}</a></h1>
                                                     <p>
                                                     {{ Article.summary }}
-                                                    </p><hr>
+                                                    </p>
+                                                {% if Article.tags %}
+                        <div class="widget clearfix">
+
+                            <div class="tags-widget">
+                                <ul class="list-inline">
+                                    {% for tag in Article.tags.all %}
+                                    <li><a href="{% url 'tagged' tag.slug%}">{{ tag.name}}</a></li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div><!-- end list-widget -->
+                        </div><!-- end widget -->
+                            {% endif %}
+                                                <hr>
 
                                             </div><!-- end desc -->
                                         </div>
                             </div><!-- end col -->
                                {% endfor %}
-                               {% endif %}
+
 
 
                         </div><!-- end row --><hr>
@@ -93,23 +106,18 @@
                             </div>
 
 
-
-                            <div class="widget clearfix">
+                           <div class="widget clearfix">
                                 <h3 class="widget-title">All Categories</h3>
 
                                     <ul class="list-inline">
-                                        {% for category in categories %}
+                                        {% for category in instance %}
                                            <div class="blog-meta">
-                                                <small><a href="{% url 'category_list' category.slug %}">{{ category.name }}</a></small>
+                                                <small><a href="">{{ instance.category.name }}</a></small>
                                             </div><!-- end blog-meta -->
                                         {% endfor %}
                                     </ul>
 
                             </div><!-- end widget -->
-
-
-
-
 
                             <div class="widget clearfix">
                                 <h3 class="widget-title">Subscribe Our Newsletter</h3>
@@ -123,7 +131,6 @@
                                     </form>
                                 </div><!-- end newsletter -->
                             </div><!-- end widget -->
-
 
 
                         </div><!-- end sidebar -->

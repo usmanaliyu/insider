@@ -7,6 +7,7 @@ from django.db.models import Q
 from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
+from django.db.models import Count
 
 from django.conf import settings
 import redis
@@ -26,7 +27,7 @@ class home(ListView):
 
 class Articles_list(ListView):
     model = Article
-    template_name = 'blog/articles_list.html'
+    template_name = 'blog/article_list.html'
     context_object_name = 'instance'
     ordering = ['-pub_date']
 
@@ -108,10 +109,15 @@ def contact(request):
 def detail(request,id):
     instance = get_object_or_404(Article,pk=id)
 
+
+
     similar_posts = instance.tags.similar_objects()[:5]
+
+
 
     total_views = r.incr('instance:{}:views'.format(instance.id))
     r.zincrby('instance_ranking', instance.id, 1)
+
 
 
     initial_data={
@@ -158,6 +164,7 @@ def detail(request,id):
         'comment_form':form,
         'total_views':total_views,
         'similar_posts':similar_posts,
+
 
 
     }

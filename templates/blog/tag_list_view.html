@@ -42,7 +42,7 @@
                                 <div class="blog-wrapper clearfix">
                                             <div class="blog-meta">
 
-                                                <small><a href="#">{{ Article.category }}</a></small>
+                                                <small><a href="{{ Article.category.get_absolute_url }}">{{ Article.category }}</a></small>
                                             </div><!-- end blog-meta -->
 
                                             <div class="blog-desc-big">
@@ -119,28 +119,7 @@
                                 </div><!-- end list-widget -->
                             </div><!-- end widget -->
 
-                            <div class="widget clearfix">
-                                <h3 class="widget-title">Popular Posts</h3>
-                                <div class="post-widget">
 
-                                    <div class="media">
-                                        <img src="{% static 'upload/blog_small_01.jpg' %}" alt="" class="img-responsive alignleft img-rounded">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><a href="blog-single.html">Learning English Like a Pro..</a></h5>
-                                            <div class="blog-meta">
-                                                <ul class="list-inline">
-                                                    <li>4 days ago</li>
-                                                    <li><span>by</span> <a href="#">Edulogy Team</a></li>
-                                                </ul>
-                                            </div><!-- end blog-meta -->
-                                        </div>
-                                    </div>
-
-
-
-
-                                </div><!-- end post-widget -->
-                            </div><!-- end widget -->
 
                             <div class="widget clearfix">
                                 <h3 class="widget-title">Subscribe Our Newsletter</h3>

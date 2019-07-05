@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Article',
     'comments',
     'taggit',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 REDIS_HOST  = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 0
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

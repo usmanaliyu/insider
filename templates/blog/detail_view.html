@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -392,10 +393,27 @@
                                     {% csrf_token %}
 
                                     <div class="col-md-12">
-                                        {{ comment_form.as_p }}
+                                        {{ comment_form|crispy }}
 
                                             <input  class="btn btn-primary" type="submit" value="Post Comment">
                    <input type="hidden" name="next" value="{{ next }}">
+
+
+                                        {% for field in form %}
+
+                                       <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-control" for="{{ ield.id_for_label }}">{{ field.html_name}}</label>
+                                            {{ field}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea placeholder="Your message" class="form-control"></textarea>
+                                        <button class="btn btn-primary" type="submit">SEND COMMENT</button>
+                                    </div>
+                                        {% endfor %}
+
+
 
                                     </div>
                                 </form>
@@ -421,7 +439,7 @@
                                     <div class="media">
                                         <img src="{% static 'upload/blog_small_01.jpg' %}" alt="" class="img-responsive alignleft img-rounded">
                                         <div class="media-body">
-                                            <h5 class="mt-0"><a href="blog-single.html">{{ instance.title }}</a></h5>
+                                            <h5 class="mt-0"><a href="{% url 'detail' instance.id %}">{{ instance.title }}</a></h5>
                                             <div class="blog-meta">
                                                 <ul class="list-inline">
                                                     <li>4 days ago</li>
@@ -430,6 +448,8 @@
                                             </div><!-- end blog-meta -->
                                         </div>
                                     </div>
+                                    {% empty %}
+                                    <p>No similar posts available. </p>
                                     {% endfor %}
 
 
