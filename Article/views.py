@@ -70,6 +70,7 @@ def tagged(request, tags_slug):
     instance = Article.objects.all()
 
 
+
     if tags_slug:
         tags = get_object_or_404(Tag, slug=tags_slug)
         instance = instance.filter(tags=tags)
@@ -78,7 +79,8 @@ def tagged(request, tags_slug):
     context = {
         'categories':categories,
         'instance':instance,
-        'tag':tags
+        'tag':tags,
+
 
                }
     return render(request, 'blog/tag_list_view.html',context)
@@ -105,6 +107,9 @@ def contact(request):
 
 def detail(request,id):
     instance = get_object_or_404(Article,pk=id)
+
+    similar_posts = instance.tags.similar_objects()[:5]
+
     total_views = r.incr('instance:{}:views'.format(instance.id))
     r.zincrby('instance_ranking', instance.id, 1)
 
@@ -152,6 +157,7 @@ def detail(request,id):
         'comments': comments,
         'comment_form':form,
         'total_views':total_views,
+        'similar_posts':similar_posts,
 
 
     }

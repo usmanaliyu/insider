@@ -105,6 +105,20 @@
                                 </div>
                             </div>
 
+
+                             <div class="widget clearfix">
+                                <h3 class="widget-title">All Tags</h3>
+                                <div class="tags-widget">
+                                    <ul class="list-inline">
+                                        {% for tags in categories %}
+                                        <li><a href="{% url 'tagged' tags.slug %}">{{ tags.name}}</a></li>
+
+                                        {% endfor %}
+
+                                    </ul>
+                                </div><!-- end list-widget -->
+                            </div><!-- end widget -->
+
                             <div class="widget clearfix">
                                 <h3 class="widget-title">Popular Posts</h3>
                                 <div class="post-widget">
@@ -122,31 +136,7 @@
                                         </div>
                                     </div>
 
-                                     <div class="media">
-                                        <img src="{% static 'upload/blog_small_01.jpg' %}" alt="" class="img-responsive alignleft img-rounded">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><a href="blog-single.html">Learning English Like a Pro..</a></h5>
-                                            <div class="blog-meta">
-                                                <ul class="list-inline">
-                                                    <li>4 days ago</li>
-                                                    <li><span>by</span> <a href="#">Edulogy Team</a></li>
-                                                </ul>
-                                            </div><!-- end blog-meta -->
-                                        </div>
-                                    </div>
 
-                                     <div class="media">
-                                        <img src="{% static 'upload/blog_small_01.jpg' %}" alt="" class="img-responsive alignleft img-rounded">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><a href="blog-single.html">Learning English Like a Pro..</a></h5>
-                                            <div class="blog-meta">
-                                                <ul class="list-inline">
-                                                    <li>4 days ago</li>
-                                                    <li><span>by</span> <a href="#">Edulogy Team</a></li>
-                                                </ul>
-                                            </div><!-- end blog-meta -->
-                                        </div>
-                                    </div>
 
 
                                 </div><!-- end post-widget -->
@@ -165,19 +155,7 @@
                                 </div><!-- end newsletter -->
                             </div><!-- end widget -->
 
-                            <div class="widget clearfix">
-                                <h3 class="widget-title">Popular Tags</h3>
-                                <div class="tags-widget">
-                                    <ul class="list-inline">
-                                        {% for tags in Tag %}
-                                        <li><a href="{% url 'tagged' tag.slug %}">{{ tag.name}}</a></li>
 
-                                        <li><a href="#">No tag avalable</a></li>
-                                        {% endfor %}
-
-                                    </ul>
-                                </div><!-- end list-widget -->
-                            </div><!-- end widget -->
                         </div><!-- end sidebar -->
                     </div><!-- end row -->
                 </div><!-- end boxed -->

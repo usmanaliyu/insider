@@ -31,3 +31,9 @@ Q
 !templates/blog/tag_list_view.html,8/3/83e3922f426e42e906a9cc6b4ce9bb2041497178
 B
 comments/models.py,5/7/575ea23ff15cda70c6923d644607721a006a9719
+A
+comments/admin.py,a/b/abfbfdda298301fb8bed9eeb7150048cb0521136
+A
+comments/forms.py,8/a/8a118516577043264d6575fedb60fbdb291a6dbe
+A
+comments/views.py,c/a/ca0211ff5267edcd08a9a627ea5ec4d268b7303c
