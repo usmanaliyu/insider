@@ -27,3 +27,7 @@ A
 Article/models.py,9/a/9a45e67c23cdc37d109efdc4a90ad5782d4dd10e
 @
 Article/admin.py,d/e/de082682b659b96790e62024b9541314029d4a7c
+Q
+!templates/blog/tag_list_view.html,8/3/83e3922f426e42e906a9cc6b4ce9bb2041497178
+B
+comments/models.py,5/7/575ea23ff15cda70c6923d644607721a006a9719

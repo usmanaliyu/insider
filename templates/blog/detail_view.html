@@ -30,6 +30,10 @@
                                 <div class="blog-wrapper clearfix">
                                     <div class="blog-meta">
                                         <small><a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a></small>
+
+                                        <p>{{ total_views }}<br>
+                                        view{{ total_views|pluralize }}</p>
+
                                         <h3>{{ instance.title }}</h3>
                                         <ul class="list-inline">
                                             <li>{{ instance.pub_date}}</li>
@@ -338,14 +342,18 @@
 
                                         <hr class="invis">
 
+
+                                        {% if instance.tags %}
                                         <div class="tags-widget">
                                             <ul class="list-inline">
-                                                <li><a href="#">course</a></li>
-                                                <li><a href="#">web design</a></li>
-                                                <li><a href="#">development</a></li>
-                                                <li><a href="#">language</a></li>
+
+                                                {% for tag in instance.tags.all %}
+                                    <li><a href="{% url 'tagged' tag.slug%}">{{ tag.name}}</a></li>
+                                    {% endfor %}
+
                                             </ul>
                                         </div><!-- end list-widget -->
+                                        {% endif %}
 
                                     </div><!-- end desc -->
                                 </div><!-- end blog -->
@@ -354,47 +362,50 @@
 
 
                             <div class="content boxed-comment clearfix">
-                                <h3 class="small-title">3 Comments</h3>
+                                <h3 class="small-title">{{ comments.count }} Comment</h3>
                                 <div class="comments-list">
+
+
+                                    {% for comment in comments %}
                                     <div class="media">
-                                        <p class="pull-right"><small>5 days ago</small></p>
+                                        <p class="pull-right"><small>{{ comment.timestamp|timesince}} ago,</small></p>
                                         <div class="media-body">
-                                            <h4 class="media-heading user_name">Baltej Singh</h4>
-                                            <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag. Selfies iPhone Kickstarter, drinking vinegar jean.</p>
+                                            <h4 class="media-heading user_name">{{ comment.user}}</h4>
+                                            <p>{{ comment.content }}</p>
                                             <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                         </div>
                                     </div>
+                                    {% endfor %}
 
 
                                 </div>
                             </div><!-- end content -->
 
+
+
+
+
                             <div class="content boxed-comment clearfix">
                                 <h3 class="small-title">Leave a Comment</h3>
-                                <form class="big-contact-form">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Full Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                        <input type="text" class="form-control" name="website" placeholder="Website">
-                                        </div>
-                                    </div>
+
+
+                                <form class="big-contact-form" name="contactForm" id="contactForm" method="post">
+                                    {% csrf_token %}
+
                                     <div class="col-md-12">
-                                        <textarea placeholder="Your message" class="form-control"></textarea>
-                                        <button class="btn btn-primary" type="submit">SEND COMMENT</button>
+                                        {{ comment_form.as_p }}
+
+                                            <input  class="btn btn-primary" type="submit" value="Post Comment">
+                   <input type="hidden" name="next" value="{{ next }}">
+
                                     </div>
                                 </form>
                             </div><!-- end content -->
 
                         </div><!-- end col -->
+
+
+
 
                         <div class="sidebar col-md-4">
                             <div class="widget clearfix">

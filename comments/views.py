@@ -6,6 +6,7 @@ from . forms import CommentForm
 from django.contrib import messages
 
 
+
 # Create your views here.
 
 def comment_thread(request,id):

@@ -8,6 +8,15 @@ from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
 
+from django.conf import settings
+import redis
+
+
+r = redis.StrictRedis(host=settings.REDIS_HOST,
+                      port=settings.REDIS_PORT,
+                      db = settings.REDIS_DB)
+
+
 # Create your views here.
 
 class home(ListView):
@@ -96,6 +105,8 @@ def contact(request):
 
 def detail(request,id):
     instance = get_object_or_404(Article,pk=id)
+    total_views = r.incr('instance:{}:views'.format(instance.id))
+    r.zincrby('instance_ranking', instance.id, 1)
 
 
     initial_data={
@@ -137,8 +148,19 @@ def detail(request,id):
         'instance':instance,
         'comments': comments,
         'comment_form':form,
+        'total_views':total_views,
 
 
     }
     return render(request,'blog/detail_view.html',context)
 
+
+def instance_ranking(request):
+    instance_ranking = r.zrange('instance_ranking', 0, -1, desc=True)[:10]
+    instance_ranking_ids = [int(id) for id in instance_ranking]
+    most_viewed = list(Article.objects.filter(id__in=instance_ranking_ids))
+    most_viewed.sort(key=lambda x: instance_ranking_ids.index(x.id))
+
+    return render(request, 'blog/ranking.html',
+                  {'section':'instances',
+                   'most_viewed': most_viewed})

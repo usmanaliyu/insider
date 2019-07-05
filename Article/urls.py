@@ -13,4 +13,5 @@ urlpatterns = [
     #path('tag/<str:tags_slug>/', views.tag_list_view.as_view(), name='tagged'),
     path('events/', views.events, name='events'),
     path('contact/', views.contact, name='contact'),
+    path('ranking/', views.instance_ranking, name='create'),
 ]
