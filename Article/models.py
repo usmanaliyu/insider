@@ -6,6 +6,8 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 
 
+
+
 # Create your models here.
 
 class Category(models.Model):

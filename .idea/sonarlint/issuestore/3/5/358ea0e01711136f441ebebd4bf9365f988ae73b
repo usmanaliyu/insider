@@ -1,6 +1,4 @@
 
-lpython:S101"IRename class "home" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(òž²¯ÿÿÿÿÿ8ç®ô×»-
-ppython:S101;"RRename class "tag_list_view" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(ýê³–8ç®ô×»-
-Spython:S1481’".Remove the unused local variable "parent_obj".(Ô•“‰øÿÿÿÿ8”°¡¾¼
-Npython:S1481ˆ".Remove the unused local variable "parent_obj".(ßæêò8”°¡¾¼
-ppython:S101"RRename class "Articles_list" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(Ä›ÊÞ8­µÛš¼-
+Npython:S1481’".Remove the unused local variable "parent_obj".(ßæêò8Æ„µ¢¼-
+upython:S1542#"VRename function "Articles_list" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Û±™ÿ8âø²¢¼-
+Spython:S1481œ".Remove the unused local variable "parent_obj".(Ô•“‰øÿÿÿÿ8Æ„µ¢¼-

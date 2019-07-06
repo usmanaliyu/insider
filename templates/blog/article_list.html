@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 {% block content %}
         <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
             <div class="container">
@@ -24,14 +25,17 @@
                         <div class="col-md-8">
 <hr>
 
-                           <div class="row">
+
 
 
 
                                 {% for Article in instance %}
+                             <div class="row">
                             <div class="col-md-4 hidden-sm hidden-xs">
                               <div class="image-wrap entry">
-                                  <img src="{% static 'upload/blog_03.jpeg' %}" alt="" class="img-responsive">
+                                 {% thumbnail Article.preview_image "250x250" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
                                   <div class="magnifier">
                                        <a href="blog-single.html" title=""><i class="flaticon-add"></i></a>
                                   </div>
@@ -63,16 +67,17 @@
                             </div><!-- end list-widget -->
                         </div><!-- end widget -->
                             {% endif %}
-                                                <hr>
+
 
                                             </div><!-- end desc -->
                                         </div>
                             </div><!-- end col -->
+                               </div><!-- end row --><hr>
                                {% endfor %}
 
 
 
-                        </div><!-- end row --><hr>
+
 
 
 

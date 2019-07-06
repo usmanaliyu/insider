@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'comments',
     'taggit',
     'crispy_forms',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

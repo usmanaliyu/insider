@@ -1,13 +1,9 @@
-from django.shortcuts import render, redirect,get_object_or_404, HttpResponseRedirect
-from django.views.generic import DetailView, ListView
-from django.views.generic.edit import CreateView
+from django.shortcuts import render,get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from . models import Article, Category
-from django.db.models import Q
 from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
-from django.db.models import Count
 
 from django.conf import settings
 import redis
@@ -24,9 +20,11 @@ def home(request):
     instance = Article.objects.all()
     categories = Category.objects.all()
 
+
     content = {
         'instance': instance,
         'categories': categories,
+
     }
     return render(request, 'blog/home.html', content)
 
