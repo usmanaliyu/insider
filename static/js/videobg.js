@@ -60,9 +60,9 @@ this.player.seekTo(0)}}}})(void 0);
                 "loop": true,           //Loop when it reaches the end
                 "autoplay": true,       //Autoplay at start
                 "muted": true,          //Muted at start
-                "mp4":"upload/preview.mp4" ,     //Path to video mp4 format
-                "ogg":"upload/preview.ogg" ,     //Path to video ogg format
-                "webm":"upload/preview.webm" ,     //Path to video webm format
+                "mp4":"static/upload/preview.mp4" ,     //Path to video mp4 format
+                "ogg":"static/upload/preview.ogg" ,     //Path to video ogg format
+                "webm":"static/upload/preview.webm" ,     //Path to video webm format
                 "video_ratio": 1.7778,              // width/height -> If none provided sizing of the video is set to adjust
                 "fallback_image": "images/dummy.png",   //Fallback image path
                 "priority": "html5"             //Priority for html5 (if set to flash and tested locally will give a flash security error)
