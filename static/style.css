@@ -222,7 +222,7 @@ HEADER
     left: 0;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 15px;
     background-color:#000;
     text-decoration: none !important;
     -webkit-transition: all .3s ease-in-out;

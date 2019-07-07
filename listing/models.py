@@ -1,7 +1,11 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
+from taggit.managers import TaggableManager
+from comments . models import Comment
+
+from django_countries.fields import CountryField
 
 # Create your models here.
 class Listing_category(models.Model):
@@ -29,12 +33,7 @@ class Listing(models.Model):
 
     street = models.CharField(max_length=100, blank=False)
     city = models.CharField(max_length=100,blank=False)
-    country = models.CharField(max_length=100,blank=False, choices=(
-        ('Nigeria','Nigeria'),
-        ('Ghana','Ghana'),
-        ('south Africa', 'South Africa'),
-        ('Senigal','Senigal'),
-    ))
+    country = CountryField(blank_label='(select country)')
 
 
     description = models.TextField(max_length=1000, blank=False)
@@ -43,12 +42,27 @@ class Listing(models.Model):
 
 
     class Meta:
-        ordering = ['-company_name']
+        ordering =['company_name']
+        verbose_name = 'listing_list'
+
+    def get_absolute_url(self):
+        return reverse('list_listing', args=[self.slug])
 
     def __unicode__(self):
         return self.company_name
 
     def __str__(self):
         return self.company_name
+    @property
+    def comments(self):
+        instance = self
+        qs = Comment.objects.filter_by_instance(instance)
+        return qs
+
+    @property
+    def get_content_type(self):
+        instance = self
+        content_type = ContentType.objects.get_for_model(instance.__class__)
+        return content_type
 
 

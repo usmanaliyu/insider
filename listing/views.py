@@ -9,6 +9,11 @@ from taggit.models import Tag
 from django.conf import settings
 import redis
 
+r = redis.StrictRedis(host=settings.REDIS_HOST,
+                      port=settings.REDIS_PORT,
+                      db = settings.REDIS_DB)
+
+
 
 
 # Create your views here.
@@ -23,5 +28,62 @@ def Listing_list(request):
         'listing_categories':listing_categories,
         'categories':categories,
     }
-    return render(request,'listing/listing_list.html',content)
+    return render(request,'listing/business_listing.html',content)
+
+
+
+
+def listing_detail(request,id):
+    instance = get_object_or_404(Listing, pk=id)
+
+
+
+    total_views = r.incr('instance:{}:views'.format(instance.id))
+    r.zincrby('instance_ranking', instance.id, 1)
+
+    initial_data = {
+        'content_type': instance.get_content_type,
+        'object_id': instance.id
+    }
+    form = CommentForm(request.POST or None, initial=initial_data)
+    if form.is_valid():
+        c_type = form.cleaned_data.get('content_type')
+        content_type = ContentType.objects.get(model=c_type)
+        obj_id = form.cleaned_data.get('object_id')
+        content_data = form.cleaned_data.get('content')
+        user_data = form.cleaned_data.get('user')
+        email_data = form.cleaned_data.get('email')
+
+        parent_obj = None
+        try:
+            parent_id = request.POST.get('parent_id')
+        except:
+            parent_id = None
+
+        if parent_id:
+            parent_qs = Comment.objects.filter(id=parent_id)
+            if parent_qs.exists():
+                parent_obj = parent_qs.first()
+
+        new_comment, created = Comment.objects.get_or_create(
+            user=user_data,
+            email=email_data,
+            content_type=content_type,
+            object_id=obj_id,
+            content=content_data,
+
+        )
+
+    comments = instance.comments
+    context = {
+
+        'instance': instance,
+        'comments': comments,
+        'comment_form': form,
+        'total_views': total_views,
+
+
+    }
+    return render(request, 'listing/business_detail.html', context)
+
 
