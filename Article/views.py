@@ -108,8 +108,8 @@ def events(request):
 
 
 
-def detail(request,id):
-    instance = get_object_or_404(Article,pk=id)
+def detail(request,article_slug):
+    instance = get_object_or_404(Article,slug=article_slug)
     categories = Category.objects.all()
 
 

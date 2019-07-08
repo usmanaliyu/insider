@@ -41,15 +41,9 @@ class Listing(models.Model):
 
 
 
-    class Meta:
-        ordering =['company_name']
-        verbose_name = 'listing_list'
 
-    def get_absolute_url(self):
-        return reverse('list_listing', args=[self.slug])
 
-    def __unicode__(self):
-        return self.company_name
+
 
     def __str__(self):
         return self.company_name
