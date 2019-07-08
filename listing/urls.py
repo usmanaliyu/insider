@@ -3,7 +3,8 @@ from . import views
 
 
 urlpatterns = [
-    path('business-listings/',views.Listing_list, name='listing_home'),
+    path('business-listings/',views.Listing_list, name='listing_list'),
+    path('business-listings/search/',views.listing_search, name='listing_search'),
     path('<str:listing_slug>/',views.listing_detail, name='listing_detail'),
-    path('list',views.list_home),
+    path('listings',views.list_home, name="listing_home"),
 ]

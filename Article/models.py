@@ -25,6 +25,7 @@ class Category(models.Model):
         return self.name
 
 class Article(models.Model):
+    popular = models.CharField(max_length=50, blank=True, choices=(('true','True'),('false','False')))
     category = models.ForeignKey(Category,on_delete=models.CASCADE, default=1,)
     preview_image = models.ImageField(upload_to='upload/',blank=True)
     tags = TaggableManager()

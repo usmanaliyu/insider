@@ -4,6 +4,8 @@ from . models import Article, Category
 from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
+from django.core.paginator import Paginator
+
 
 from django.conf import settings
 import redis
@@ -17,13 +19,18 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 # Create your views here.
 
 def home(request):
-    instance = Article.objects.all()
+    instance_list = Article.objects.all()
     categories = Category.objects.all()
+
+    paginator = Paginator(instance_list, 5)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    instance = paginator.get_page(page)
 
 
     content = {
         'instance': instance,
         'categories': categories,
+
 
     }
     return render(request, 'blog/home.html', content)
@@ -31,8 +38,12 @@ def home(request):
 
 
 def Articles_list(request):
-    instance= Article.objects.all()
+    instance_list= Article.objects.all()
     categories = Category.objects.all()
+
+    paginator = Paginator(instance_list, 10)
+    page = request.GET.get('page')
+    instance = paginator.get_page(page)
 
     content ={
         'instance':instance,

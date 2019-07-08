@@ -5,6 +5,7 @@ from Article.models import Article, Category
 from comments.forms import CommentForm
 from comments.models import Comment
 from taggit.models import Tag
+from . choices import country_choice
 
 from django.conf import settings
 import redis
@@ -88,6 +89,37 @@ def listing_detail(request,listing_slug):
 
 
 def list_home(request):
-    return render(request,'listing/listing_home.html')
+    instance = Listing.objects.all()
+
+
+    content ={
+        'instance':instance,
+        'country_choice':country_choice,
+
+    }
+    return render(request,'listing/listing_home.html',content)
+
+
+
+def listing_search(request):
+    qs = Listing.objects.order_by('company_name')
+
+    if 'Keywords' in request.GET:
+        keywords = request.GET['Keywords']
+        if keywords:
+            qs = qs.filter(description__icontains=keywords)
+
+    if 'country' in request.GET:
+        country = request.GET['country']
+        if country:
+            qs = qs.filter(country__iexact=country)
+
+    content ={
+        'instance':qs,
+        'country_choice':country_choice,
+
+    }
+    return render(request,'listing/listing_search.html',content)
+
 
 

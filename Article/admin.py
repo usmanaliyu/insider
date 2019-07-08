@@ -8,8 +8,8 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title','tags','preview_image')
-    list_editable = ('preview_image',)
+    list_display = ('title','tags','preview_image','popular')
+    list_editable = ('preview_image','popular')
     prepopulated_fields = {'slug':('title',)}
 
 

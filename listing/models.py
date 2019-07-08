@@ -50,7 +50,52 @@ class Listing(models.Model):
 
     street = models.CharField(max_length=100, blank=False)
     city = models.CharField(max_length=100,blank=False)
-    country = CountryField( countries=AfricanCountries,blank_label='(select country)')
+    country = models.CharField(max_length=200, choices=(
+                            ('DZ', 'Algeria'),
+                            ('AO', 'Angola'),
+                            ('BJ', 'Benin'),
+                            ('BW', 'Botswana'),
+                            ('BF', 'Burkina Faso'),
+                            ('BI', 'Burundi'),
+                            ('CM', 'Cameroon'),
+                            ('CV', 'Cape Verde'),
+                            ('CF', 'Central African Republic'),
+                            ('KM', 'Comoros'),
+                            ('CD', 'Democratic Republic of Congo'),
+                            ('DJ', 'Djibouti'),
+                            ('EG', 'Egypt'),
+                            ('GQ', 'Equatorial Guinea'),
+                            ('ER', 'Eritrea'),
+                            ('ET', 'Ethiopia'),
+                            ('GA', 'Gabon'),
+                            ('GM', 'Gambia'),
+                            ('GH', 'Ghana'),
+                            ('GN', 'Guinea'),
+                            ('GW', 'Guinea-Bissau'),
+                            ('CI', 'Ivory Coast'),
+                            ('KE', 'Kenya'),
+                            ('LS', 'Lesotho'),
+                               ('LR', 'Liberia'),
+                               ('LY', 'Libya'),
+                               ('MG', 'Madagascar'),
+                               ('MW', 'Malawi'),
+                               ('ML', 'Mali'),
+                               ('MR', 'Mauritania'),
+                               ('MU', 'Mauritius'),
+                               ('MA', 'Morocco'),
+                               ('MZ', 'Mozambique'),
+                               ('NA', 'Namibia'),
+                               ('NE', 'Niger'),
+                               ('NG', 'Nigeria'),
+                               ('CG', 'Republic of the Congo'),
+                               ('RE', 'Reunion'),
+                               ('RW', 'Rwanda'),
+                               ('SH', 'Saint Helena'),
+                               ('ST', 'Sao Tome and Principe'),
+                               ('SN', 'Senegal'),
+                               ('SC', 'Seychelles'),
+                               ('SL', 'Sierra Leone'),
+    ))
 
 
     description = models.TextField(max_length=1000, blank=False)
