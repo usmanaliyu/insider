@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% block title %}
+{{ category.name }}
+{% endblock %}
 {% block content %}
         <section class="section db p120" style="background-image:url('{% static 'upload/parallax_01.jpeg' %}');>
             <div class="container">
@@ -90,15 +93,24 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <ul class="pagination">
-                                        <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
-                                        <li class="active"><a href="javascript:void(0)">1</a></li>
-                                        <li><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">...</a></li>
-                                        <li><a href="javascript:void(0)">&raquo;</a></li>
+                                        {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page=1">&laquo;</a></li>
+                                        {% endif %}
+                                        {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page={{ instance.previous_page_number }}">{{ instance.previous_page_number }}</a></li>
+                                        <li class="active"><a href="">{{instance.number}}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.next_page_number }}">{{ instance.next_page_number }}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.paginator.num_pages }}">&raquo;</a></li>
+                                        {% endif %}
+
                                     </ul>
                                 </div><!-- end col -->
                             </div><!-- end row -->
+                            <p><small>Page {{ instance.number }} of {{ instance.paginator.num_pages }}</small></p>
                         </div><!-- end col -->
 
                         <div class="sidebar col-md-4">

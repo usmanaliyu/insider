@@ -1,28 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail%}
 {% load crispy_forms_tags %}
+{% block title %}
+{{ instance.title }}
+{% endblock %}
 {% block content %}
 
 
-        <section class="section db p120" style="background-image:url('{% if instance.preview_image %} {{ instance.preview_image.url }} {% endif %}')";>
-            <div class="container" >
-                <div class="row">
-                    <div class="col-md-12"><br><br>
-                        <div class="tagline-message page-title text-center">
-                            <h3>Articles</h3>
-                            <ul class="breadcrumb">
-                                <li><a href="javascript:void(0)">Business Inside</a></li>
-                                <li class="active">Articles</li>
-                            </ul>
-                        </div>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-
-            </div><!-- end container -->
-        </section><!-- end section -->
 
 
-<section class="section gb nopadtop">
+<section class="section gb ">
             <div class="container">
                 <div class="boxed">
                     <div class="row">
@@ -34,10 +22,10 @@
 
 
 
-                                        <h3>{{ instance.title }}</h3>
+                                        <h3 >{{ instance.title }}</h3>
                                         <ul class="list-inline">
                                             <li>{{ instance.pub_date}}</li>
-                                            <li><span>written by</span> <a href="#">Edulogy Team</a></li>
+                                            <li><span>{{ total_views }} view{{ total_views|pluralize }}</span> </li>
                                         </ul>
                                     </div><!-- end blog-meta -->
 
@@ -362,7 +350,7 @@
 
 
                             <div class="content boxed-comment clearfix">
-                                <h3 class="small-title">{{ comments.count }} Comment</h3>
+                                <h3 class="small-title">{{ comments.count }} Comment{{ comments.count|pluralize }}</h3>
                                 <div class="comments-list">
 
 
@@ -374,7 +362,7 @@
                                             <p>{{ comment.content }}</p>
                                             <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                         </div>
-                                    </div>
+                                    </div><hr>
                                     {% endfor %}
 
 
@@ -414,26 +402,21 @@
 
                         <div class="sidebar col-md-4">
 
-                                    <p>{{ total_views }}
-                                        view{{ total_views|pluralize }}</p>
 
 
                             <div class="widget clearfix">
-                                <h3 class="widget-title">Similar Posts</h3>
+                                <h3 class="widget-title"><br>Similar Posts</h3>
                                 <div class="post-widget">
 
                                     {% for instance in similar_posts %}
 
                                     <div class="media">
-                                        <img src="{% static 'upload/blog_small_01.jpg' %}" alt="" class="img-responsive alignleft img-rounded">
+                                         {% thumbnail instance.preview_image "50x50" crop="center" as im %}
+                                        <img src="{% if instance.preview_image %}{{ im.url }}{% endif %}" width="{{ im.width }}" height="{{ im.height }} alt="" class="img-responsive alignleft img-rounded">
+                                        {% endthumbnail %}
                                         <div class="media-body">
-                                            <h5 class="mt-0"><a href="{% url 'detail' instance.id %}">{{ instance.title }}</a></h5>
-                                            <div class="blog-meta">
-                                                <ul class="list-inline">
-                                                    <li>4 days ago</li>
-                                                    <li><span>by</span> <a href="#">Edulogy Team</a></li>
-                                                </ul>
-                                            </div><!-- end blog-meta -->
+                                            <h4 class="mt-0"><a href="{% url 'detail' instance.slug %}">{{ instance.title }}</a></h4>
+
                                         </div>
                                     </div>
                                     {% empty %}

@@ -22,7 +22,7 @@ def home(request):
     instance_list = Article.objects.all()
     categories = Category.objects.all()
 
-    paginator = Paginator(instance_list, 5)  # Show 25 contacts per page
+    paginator = Paginator(instance_list, 5)
     page = request.GET.get('page')
     instance = paginator.get_page(page)
 
@@ -178,6 +178,7 @@ def detail(request,article_slug):
         'comment_form':form,
         'total_views':total_views,
         'similar_posts':similar_posts,
+        'categories':categories,
 
 
 

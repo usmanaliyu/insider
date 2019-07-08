@@ -30,10 +30,10 @@
                            <p> Search Startups near you</p>
                                 <form class="form-inline" role="search" action="{% url 'listing_search' %}">
                                     <div class="form-1">
-                                        <input type="text" class="form-control" placeholder="Enter email here.." name="Keywords">
+                                        <input type="text" class="btn btn-primary  form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
 
-                                        <div class="btn btn-primary form-row">
-                                            <select class="selectpicker btn btn-primary" name="country">
+                                        <div class="btn btn-primary ">
+                                            <select class="btn btn-primary" name="country">
                                             <option selected="True" disabled="disabled">Country (All)</option>
                                                 {% for key,value in country_choice.items %}
 
@@ -43,7 +43,9 @@
 
                                          </select>
                                         </div>
-                                        <button type="submit">submit </button>
+
+
+
 
 
                                     </div>
