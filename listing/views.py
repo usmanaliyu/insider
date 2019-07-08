@@ -87,3 +87,7 @@ def listing_detail(request,listing_slug):
     return render(request, 'listing/business_detail.html', context)
 
 
+def list_home(request):
+    return render(request,'listing/listing_home.html')
+
+

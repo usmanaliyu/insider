@@ -6,8 +6,25 @@ from taggit.managers import TaggableManager
 from comments . models import Comment
 
 from django_countries.fields import CountryField
+from django_countries import Countries
 
 # Create your models here.
+
+
+class AfricanCountries(Countries):
+    only = [
+        'DZ', 'AO', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV',
+        'CF', 'KM', 'CD', 'DJ', 'EG', 'GQ', 'ER',
+        'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'CI',
+        'KE', 'LS', 'LR', 'LY', 'MG', 'MW', 'ML',
+        'MR', 'MU', 'MA', 'MZ', 'NA', 'NE', 'NG',
+        'CG', 'RE', 'RW', 'SH', 'ST', 'SN', 'SC',
+        'SL',
+
+    ]
+
+
+
 class Listing_category(models.Model):
     name = models.CharField(max_length=250, blank=True)
     slug = models.SlugField(max_length=250)
@@ -33,7 +50,7 @@ class Listing(models.Model):
 
     street = models.CharField(max_length=100, blank=False)
     city = models.CharField(max_length=100,blank=False)
-    country = CountryField(blank_label='(select country)')
+    country = CountryField( countries=AfricanCountries,blank_label='(select country)')
 
 
     description = models.TextField(max_length=1000, blank=False)

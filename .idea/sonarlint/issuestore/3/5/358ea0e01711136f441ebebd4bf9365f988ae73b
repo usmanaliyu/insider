@@ -1,4 +1,5 @@
 
-Spython:S1481š".Remove the unused local variable "parent_obj".(Ô•“‰øÿÿÿÿ8Æ„µ¢¼-
+Npython:S1481‹".Remove the unused local variable "parent_obj".(ßæêò8Æ„µ¢¼-
 upython:S1542!"VRename function "Articles_list" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Û±™ÿ8âø²¢¼-
-Npython:S1481".Remove the unused local variable "parent_obj".(ßæêò8Æ„µ¢¼-
+Mpython:S1481q".Remove the unused local variable "categories".(¸°²ƒ8Áà“ú¼-
+Spython:S1481•".Remove the unused local variable "parent_obj".(Ô•“‰øÿÿÿÿ8Æ„µ¢¼-

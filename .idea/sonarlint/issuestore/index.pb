@@ -19,10 +19,6 @@ Q
 !templates/blog/category_list.html,c/9/c99639469483397236b82ded9b2e5992f30df1c6
 J
 templates/blog/events.html,1/a/1a39543af85f85f1bc9806e72f74fc963eb86ce1
-Q
-!templates/blog/articles_list.html,5/5/5594957ed1e437fd7cf00f0846fc06e159b34429
-K
-templates/blog/contact.html,c/d/cd5a06fbf9adc4a548dc7f98d290e4270cac7771
 A
 Article/models.py,9/a/9a45e67c23cdc37d109efdc4a90ad5782d4dd10e
 @
@@ -51,3 +47,9 @@ A
 listing/admin.py,3/3/33e00cdb6a98cf9a21219f595712448bbc31c3d6
 @
 listing/views.py,2/6/265d05cc38f47fa0a3ba28d3af4f1627779efc92
+@
+contact/views.py,b/c/bcb046a6a276110de24590e72d7c9c4dc29bce0b
+V
+&templates/listing/business_detail.html,f/8/f8d318c8bc77d7657a45914bff0f2259cb1cd752
+@
+contact/forms.py,d/5/d51b1f74403c61e98b122e6819b7712571faefcd

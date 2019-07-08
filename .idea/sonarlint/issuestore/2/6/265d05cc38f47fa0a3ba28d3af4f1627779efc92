@@ -1,2 +1,4 @@
 
-tpython:S1542"URename function "Listing_list" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ˆËÛÜ8à±±©¼-
+Mpython:S14819".Remove the unused local variable "parent_obj".(ßæêò8Äæýù¼-
+tpython:S1542"URename function "Listing_list" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ˆËÛÜ8à±±©¼-
+Rpython:S1481B".Remove the unused local variable "parent_obj".(Ô•“‰øÿÿÿÿ8Äæýù¼-
