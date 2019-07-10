@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='listing',
             name='country',
-            field=django_countries.fields.CountryField(countries=listing.models.AfricanCountries, max_length=2),
+            field=django_countries.fields.CountryField( max_length=2),
         ),
     ]

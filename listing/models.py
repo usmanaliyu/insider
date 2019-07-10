@@ -4,24 +4,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from comments . models import Comment
+from django.utils.text import slugify
 
-from django_countries.fields import CountryField
-from django_countries import Countries
 
 # Create your models here.
 
 
-class AfricanCountries(Countries):
-    only = [
-        'DZ', 'AO', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV',
-        'CF', 'KM', 'CD', 'DJ', 'EG', 'GQ', 'ER',
-        'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'CI',
-        'KE', 'LS', 'LR', 'LY', 'MG', 'MW', 'ML',
-        'MR', 'MU', 'MA', 'MZ', 'NA', 'NE', 'NG',
-        'CG', 'RE', 'RW', 'SH', 'ST', 'SN', 'SC',
-        'SL',
-
-    ]
 
 
 
@@ -113,5 +101,20 @@ class Listing(models.Model):
         instance = self
         content_type = ContentType.objects.get_for_model(instance.__class__)
         return content_type
+
+    def _get_unique_slug(self):
+        slug = slugify(self.company_name)
+        unique_slug = slug
+        num =1
+        while Listing.objects.filter(slug=unique_slug).exists():
+            unique_slug ='{}-{}'.format(slug,num)
+            num +=1
+        return unique_slug
+    def save(self,*args,**kwargs):
+        if not self.slug:
+            self.slug =self._get_unique_slug()
+        super().save(*args,**kwargs)
+
+
 
 

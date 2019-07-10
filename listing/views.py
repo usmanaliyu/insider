@@ -143,7 +143,7 @@ def listing_search(request):
 
 class listcreate(CreateView):
     model = Listing
-    fields = ['logo','company_name','slug','segment','phone_number','email','street','city','country']
+    fields = ['logo','company_name','segment','phone_number','email','street','city','country']
     template_name = 'listing/create.html'
 
     def form_valid(self, form):
