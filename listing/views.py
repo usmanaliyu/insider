@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404, Http404
+from django.shortcuts import render,get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from . models import Listing, Listing_category
 from Article.models import Article, Category
@@ -8,7 +8,6 @@ from taggit.models import Tag
 from . choices import country_choice
 from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView
-from . form import ListForm
 
 from django.conf import settings
 import redis
@@ -142,38 +141,13 @@ def listing_search(request):
 
 
 
-def listcreate(request):
+class listcreate(CreateView):
+    model = Listing
+    fields = ['logo','company_name','slug','segment','phone_number','email','street','city','country']
+    template_name = 'listing/create.html'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-    form = ListForm(request.POST or None)
-
-    if form.is_valid():
-        company_data = form.cleaned_data.get('company_name')
-        slug_data = form.cleaned_data.get('slug')
-        segment_data = form.cleaned_data.get('segment')
-        phone_data = form.cleaned_data.get('phone_number')
-        email_data = form.cleaned_data.get('email')
-        street_data = form.cleaned_data.get('street')
-        city_data = form.cleaned_data.get('city')
-        country_data = form.cleaned_data.get('country')
-
-        new_comment, created = Listing.objects.get_or_create(
-            user=request.user,
-            company_name=company_data,
-            slug =slug_data,
-            segment=segment_data,
-            phone_number = phone_data,
-            email = email_data,
-            street = street_data,
-            city = city_data,
-
-
-
-        )
-    content={
-        'form':form,
-    }
-    return render(request,'listing/create.html',content)
-
-
-
+    success_url = '../'

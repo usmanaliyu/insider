@@ -41,7 +41,7 @@ class Listing_category(models.Model):
 
 class Listing(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    logo = models.ImageField(upload_to='listing-logo/', blank=True)
+    logo = models.ImageField(upload_to='listing-logo/', blank=False)
     company_name = models.CharField(max_length=250, blank=False, unique=True)
     slug = models.SlugField(max_length=200,unique=True)
     segment = models.ForeignKey(Listing_category, on_delete=models.CASCADE, default=1, )
