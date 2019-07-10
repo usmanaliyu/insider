@@ -9,6 +9,7 @@ from . choices import country_choice
 from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView
 
+
 from django.conf import settings
 import redis
 
@@ -143,7 +144,7 @@ def listing_search(request):
 
 class listcreate(CreateView):
     model = Listing
-    fields = ['logo','company_name','segment','phone_number','email','street','city','country']
+    fields = ['logo','company_name','segment','description','products','phone_number','email','street','city','country']
     template_name = 'listing/create.html'
 
     def form_valid(self, form):
@@ -151,3 +152,27 @@ class listcreate(CreateView):
         return super().form_valid(form)
 
     success_url = '../'
+
+
+
+def listtag(request, tags_slug):
+    categories = Category.objects.all()
+    tag_category = Tag.objects.all()
+    instance = Listing.objects.all()
+
+
+
+    if tags_slug:
+        tags = get_object_or_404(Tag, slug=tags_slug)
+        instance = instance.filter(tags=tags)
+
+
+    context = {
+        'categories':categories,
+        'instance':instance,
+        'tag':tags,
+        'tag_category':tag_category,
+
+
+               }
+    return render(request, 'listing/list_tag.html',context)

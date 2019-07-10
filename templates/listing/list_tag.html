@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block content %}
+
+
+
+
+        <section class="section lb p120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                            <h3>{{ tag.name }}</h3>
+                            <ul class="breadcrumb">
+                                <li><a href="javascript:void(0)">Edulogy</a></li>
+                                <li class="active">Startups</li>
+                            </ul>
+                             <div class="newsletter-widget" align="center">
+
+                                <form class="form-inline" role="search" action="{% url 'listing_search' %}">
+                                    <div class="form-1">
+                                        <input type="text" class=" form-control" align="center" placeholder="Searh here... Press Enter to submit" name="Keywords">
+
+                                        <div class="btn btn-primary ">
+                                            <select class="btn btn-primary" name="country">
+                                            <option selected="True" disabled="disabled">Country (All)</option>
+                                                {% for key,value in country_choice.items %}
+
+                                                <option value="{{ key }}">{{ value }}</option>
+
+                                                {% endfor %}
+                                         </select>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div><!-- end newsletter -->
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section><!-- end section -->
+
+        <section class="section gb nopadtop">
+            <div class="container">
+                <div class="boxed boxedp4">
+                    <div class="shop-top">
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                 <p>Page {{ instance.number }} of {{ instance.paginator.num_pages }}</p>
+                            </div>
+                            <div class="pull-right">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row blog-grid shop-grid">
+
+                        {% if instance %}
+                        {% for Listing in instance %}
+                        <div class="col-md-3">
+                            <div class="course-box shop-wrapper">
+                                <div class="image-wrap entry">
+                                   {% thumbnail Listing.logo "250x250" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                                    <div class="magnifier">
+                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{Listing.country}}</a>
+                                    </div>
+                                </div>
+                                <!-- end image-wrap -->
+                                <div class=" text-center">
+                                    <h4>
+                                        <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
+                                        <small>{{ Listing.segment }}</small>
+                                    </h4>
+                                </div>
+                                <!-- end details -->
+
+
+                            </div><!-- end box --><hr>
+                        </div><!-- end col -->
+                         {% endfor %}
+                        {% else %}
+                        <div class=" text-center">
+                        <p>No results for "{{ Keywords }}" </p>
+                        {% endif %}
+                        </div>
+
+                    </div><!-- end row -->
+
+                    <hr class="invis">
+
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <ul class="pagination">
+                                {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page=1">&laquo;</a></li>
+                                        {% endif %}
+                                        {% if instance.has_previous %}
+                                        <li class="disabled"><a href="?page={{ instance.previous_page_number }}">{{ instance.previous_page_number }}</a></li>
+                                        <li class="active"><a href="">{{instance.number}}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.next_page_number }}">{{ instance.next_page_number }}</a></li>
+                                        {% endif %}
+                                        {% if instance.has_next %}
+                                        <li class="disabled"><a href="?page={{ instance.paginator.num_pages }}">&raquo;</a></li>
+                                        {% endif %}
+                            </ul>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div>
+            </div><!-- end container -->
+        </section>
+
+      {% endblock %}

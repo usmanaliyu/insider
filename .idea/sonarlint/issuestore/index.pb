@@ -107,3 +107,9 @@ M
 templates/listing/create.html,a/8/a869aeff1f8a3664f78b7ae250bbc0f2702d7867
 ?
 listing/form.py,1/4/14e3932e1e77f754fd0c82d984226ff66a05120b
+]
+-listing/migrations/0006_auto_20190708_0303.py,e/b/ebe023fcddd626ea96cd82c2e9fbf2a7d9d9aeb2
+?
+contact/urls.py,2/f/2fa606865c7924f3cc23a8ac8294eea833a3aa4d
+O
+templates/listing/list_tag.html,1/d/1d8003f850b7b5f6f77b05b766318ae7433db351

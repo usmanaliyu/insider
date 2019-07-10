@@ -87,6 +87,7 @@ class Listing(models.Model):
 
 
     description = models.TextField(max_length=1000, blank=False)
+    tags = TaggableManager()
 
     def __str__(self):
         return self.company_name
