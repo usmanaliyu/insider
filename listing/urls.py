@@ -7,4 +7,5 @@ urlpatterns = [
     path('business-listings/search/',views.listing_search, name='listing_search'),
     path('<str:listing_slug>/',views.listing_detail, name='listing_detail'),
     path('listings',views.list_home, name="listing_home"),
+    path('create', views.listcreate, name='list_create'),
 ]

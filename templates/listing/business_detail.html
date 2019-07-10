@@ -49,40 +49,7 @@
 
 
 
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="image-wrap entry">
-                                        {% if instance.logo %}
-                                        <img src="{{ instance.logo.url }}" alt="" class="img-responsive">
-                                        {% endif %}
-                                        <div class="magnifier">
-                                            <a rel="prettyPhoto[inline]" href="upload/single_shop_02.jpg" title=""><i class="flaticon-add"></i></a>
-                                        </div>
-                                    </div><!-- end image-wrap -->
-                                </div>
 
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="image-wrap entry">
-                                        {% if instance.logo %}
-                                        <img src="{{ instance.logo.url }}" alt="" class="img-responsive">
-                                        {% endif %}
-                                        <div class="magnifier">
-                                            <a rel="prettyPhoto[inline]" href="upload/single_shop_03.jpg" title=""><i class="flaticon-add"></i></a>
-                                        </div>
-                                    </div><!-- end image-wrap -->
-                                </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="image-wrap entry">
-                                        {% if instance.logo %}
-                                        <img src="{{ instance.logo.url }}" alt="" class="img-responsive">
-                                        {% endif %}
-                                        <div class="magnifier">
-                                            <a rel="prettyPhoto[inline]" href="upload/single_shop_04.jpg" title=""><i class="flaticon-add"></i></a>
-                                        </div>
-                                    </div><!-- end image-wrap -->
-                                </div>
-                            </div><!-- end row -->
                         </div><!-- end col -->
 
                         <div class="col-md-6">
@@ -120,7 +87,7 @@
                                                 </tr>
 
                                                     <td><strong>Country</strong></td>
-                                                    <td>{{ instance.country.name }}</td>
+                                                    <td>{{ instance.country }}</td>
                                                 </tr>
                                                 <tr>
                                                      <td><strong>Contact</strong></td>
