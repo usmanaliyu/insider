@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -13,7 +14,9 @@
                             <div class="widget clearfix">
                                 <div class="banner-widget">
                                     {% if instance.logo %}
-                                    <img src="{{instance.logo.url}}" alt="" class="img-responsive img-rounded">
+                                    {% thumbnail instance.logo "400x300" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" class="img-responsive img-rounded">
+                                    {% endthumbnail %}
                                     {% endif %}
                                 </div>
                             </div>
@@ -28,14 +31,16 @@
                                             <div class="blog-meta">
                                                 <ul class="list-inline">
                                                      {% for tag in instance.tags.all %}
+
                                     <li><a href="{% url 'list_tag' tag.slug%}"> {{ tag.name }}</a></li>
                                                     {% endfor %}
                                                 </ul>
-                                            </div><!-- end blog-meta -->
+                                            </div><!-- end blog-meta --><hr class="invisible">
                                         </div>
-                                  {% endif %}
+                                    {% endif %}
 
                                     <table class="table">
+                                        <h3 class="widget-title"><hr>Contact information</h3>
                                             <tbody>
                                                 <tr>
                                                     <td><strong>Address</strong></td>
@@ -89,7 +94,12 @@
                                     </div><!-- end blog-meta -->
 
                                     <div class="blog-media">
-                                        <a href="blog-single.html" title=""><img src="upload/blog_01.jpg" alt="" class="img-responsive img-rounded"></a>
+                                        {% if instance.logo %}
+                                        {% thumbnail instance.logo "100x100" crop="center" as im %}
+
+                                    <img src="{{instance.logo.url}}" alt="" class="img-responsive img-rounded">
+                                        {% endthumbnail %}
+                                    {% endif %}
                                     </div><!-- end media -->
 
                                     <div class="blog-desc-big">
@@ -102,18 +112,57 @@
 
 
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
-                                        <li class="active"><a href="javascript:void(0)">1</a></li>
-                                        <li><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">...</a></li>
-                                        <li><a href="javascript:void(0)">&raquo;</a></li>
-                                    </ul>
-                                </div><!-- end col -->
-                            </div><!-- end row -->
+
+
+
+
+
+
+                            <div class="content boxed-comment clearfix">
+                                        <h3 align="center">{{ comments.count }} Review{{ comments.count|pluralize }}</h3>
+
+                                          {% for comment in comments %}
+                                    <div class="media">
+                                        <p class="pull-right"><small>{{ comment.timestamp|timesince}} ago,</small></p>
+                                        <div class="media-body">
+                                            <h4 class="media-heading user_name">{{ comment.user}}</h4>
+                                            <p>{{ comment.content }}</p>
+
+                                        </div><hr>
+                                    </div>
+                                    {% endfor %}
+
+
+
+
+
+                                        <hr class="invis">
+
+                                        <form class="big-contact-form row" role="search" name="contactForm" id="contactForm" method="post">
+                                            {% csrf_token %}
+                                            <div class="col-md-12">
+                                                <h4>Add review</h4>
+                                                <p>Your email address will not be published. </p>
+                                                {{ comment_form|crispy }}
+                                                 <input  class="btn btn-primary" type="submit" value="Review">
+                   <input type="hidden" name="next" value="{{ next }}">
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div><!-- end col -->
                     </div><!-- end row -->
                 </div><!-- end boxed -->

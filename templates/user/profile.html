@@ -16,7 +16,15 @@
 
 <p> <br><br>Welcome {{user.username}} </p>
 
+{% for Listing in instance %}
+
+        <P>{{ Listing.company_name }}</P>
+        {% empty %}
+
         <p><a href="{% url 'list_create' %}">register your business</a> </p>
+        {% endfor %}
+
+
 
                     </div>
                 </div>

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+User voice
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+{% block sidenav %}
+{% include 'partials/_sidenav.html' %}
+{% endblock %}
+
+{% block content %}
+
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main"><br><br>
+
+<h4>Posts by {{ view.kwargs.username }}({{ page_obj.paginator.count }})<br></h4>
+    {% for Listing in instance %}
+    {{instance.title }}
+    {% endfor %}
+
+
+
+
+
+
+  <div class="infinite-container">
+
+      <div class="infinite-item">
+        {% if voices %}{% for Voice in voices %}
+
+
+        <div class="">
+
+          <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1"><small><a href="{% url 'user-voice' Voice.user.username %}">{{ Voice.user }}</a> . Sunnah .</small></p>
+              <small>{{ Voice.timestamp|timesince }}ago</small>
+            </div>
+
+
+
+
+        <h5 id="conveying-meaning-to-assistive-technologies">{{ Voice.title }}</h5>
+
+        <p>{{ Voice.content }}   <a href="{% url 'voice_detail' Voice.id %}"> Read more..</a> </p>
+
+
+        <hr>
+        </div>
+        {% endfor %}{% endif %}
+
+      </div>
+
+
+  </div>
+
+
+
+
+{% endblock %}

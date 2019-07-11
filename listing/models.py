@@ -85,8 +85,8 @@ class Listing(models.Model):
                                ('Sierra Leone', 'Sierra Leone'),
     ))
 
-
-    description = models.TextField(max_length=1000, blank=False)
+    motto = models.TextField(max_length=1000, blank=True)
+    description = models.TextField(max_length=5000, blank=False)
     tags = TaggableManager()
 
     def __str__(self):

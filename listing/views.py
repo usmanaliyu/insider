@@ -10,6 +10,7 @@ from django.core.paginator import Paginator
 from django.views.generic.edit import CreateView
 
 
+
 from django.conf import settings
 import redis
 
@@ -144,7 +145,7 @@ def listing_search(request):
 
 class listcreate(CreateView):
     model = Listing
-    fields = ['logo','company_name','segment','description','products','phone_number','email','street','city','country']
+    fields = ['logo','company_name','segment','description','tags','phone_number','email','street','city','country']
     template_name = 'listing/create.html'
 
     def form_valid(self, form):

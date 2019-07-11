@@ -113,3 +113,5 @@ M
 contact/urls.py,2/f/2fa606865c7924f3cc23a8ac8294eea833a3aa4d
 O
 templates/listing/list_tag.html,1/d/1d8003f850b7b5f6f77b05b766318ae7433db351
+M
+templates/user/user_list.html,d/2/d2474630763ab5a1868a0ef48969af5c1604693e
