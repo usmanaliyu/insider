@@ -7,6 +7,9 @@ from taggit.models import Tag
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.db.models import Q
+from django.views.decorators.cache import cache_page
+from contact .forms import SubscribeForm
+from contact .models import Subscribe
 
 
 from django.conf import settings
@@ -20,6 +23,7 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 
 # Create your views here.
 
+@cache_page(60 * 15)
 def home(request):
     instance_list = Article.objects.all()
     categories = Category.objects.all()
@@ -28,11 +32,18 @@ def home(request):
     page = request.GET.get('page')
     instance = paginator.get_page(page)
 
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
 
     content = {
         'instance': instance,
         'categories': categories,
-
+        'sub':sub,
 
     }
     return render(request, 'blog/home.html', content)
@@ -47,9 +58,18 @@ def Articles_list(request):
     page = request.GET.get('page')
     instance = paginator.get_page(page)
 
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
+
     content ={
         'instance':instance,
         'categories':categories,
+        'sub':sub,
     }
     return render(request,'blog/article_list.html',content)
 
@@ -60,15 +80,28 @@ def list_of_articles_by_category(request, category_slug):
     instance = Article.objects.all()
     categories = Category.objects.all()
 
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
+
+
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        instance = instance.filter(category=category)
+        instance_list = instance.filter(category=category)
+        paginator = Paginator(instance_list, 10)
+        page = request.GET.get('page')
+        instance = paginator.get_page(page)
 
 
     context = {
         'categories':categories,
         'instance':instance,
-        'category':category
+        'category':category,
+        'sub':sub,
                }
     return render(request, 'blog/category_list.html',context)
 
@@ -81,11 +114,21 @@ def tagged(request, tags_slug):
     tag_category = Tag.objects.all()
     instance = Article.objects.all()
 
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
 
 
     if tags_slug:
         tags = get_object_or_404(Tag, slug=tags_slug)
-        instance = instance.filter(tags=tags)
+        instance_list = instance.filter(tags=tags)
+        paginator = Paginator(instance_list, 10)
+        page = request.GET.get('page')
+        instance = paginator.get_page(page)
 
 
     context = {
@@ -93,7 +136,7 @@ def tagged(request, tags_slug):
         'instance':instance,
         'tag':tags,
         'tag_category':tag_category,
-
+        'sub':sub,
 
                }
     return render(request, 'blog/tag_list_view.html',context)
@@ -105,10 +148,17 @@ def tagged(request, tags_slug):
 
 
 def events(request):
-    categories = Category.objects.all()
+
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
 
     content={
-        'categories':categories,
+        'sub':sub,
     }
     return render(request,'blog/events.html',content)
 
@@ -140,6 +190,14 @@ def detail(request,article_slug):
         'content_type': instance.get_content_type,
         'object_id': instance.id
     }
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
+
     form = CommentForm(request.POST or None, initial=initial_data)
     if form.is_valid():
         c_type = form.cleaned_data.get('content_type')
@@ -182,6 +240,7 @@ def detail(request,article_slug):
         'total_views':total_views,
         'similar_posts':similar_posts,
         'categories':categories,
+        'sub':sub,
 
 
 
@@ -202,6 +261,13 @@ def instance_ranking(request):
 
 def search(request):
     categories = Category.objects.all()
+    sub = SubscribeForm(request.POST)
+    if sub.is_valid():
+        email_data = sub.cleaned_data.get('email')
+        new_comment, created = Subscribe.objects.get_or_create(
+            email=email_data,
+        )
+        messages.success(request, 'You have subscribed successfully!!')
     if request.GET:
         search_term = request.GET['search_term']
         search_result = Article.objects.filter(
@@ -215,6 +281,7 @@ def search(request):
             'search_term':search_term,
             'instance':search_result,
             'categories':categories,
+            'sub':sub,
         }
         return render(request,'blog/search.html',content)
     else:

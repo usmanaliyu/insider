@@ -131,3 +131,7 @@ M
 advert/views.py,d/c/dc9f2d8b46a68d1a62f9123f407cc6c1ddc89b97
 L
 templates/ad/guidelines.html,0/0/00d78f215c49c81030d5278f486cf9a6cc032064
+T
+$templates/listing/category_list.html,d/3/d3c2dca2cfe1d387669e9695271b7c4b9a11c235
+?
+contact/apps.py,4/7/4774c2fee907e39fe1b1b62143ae2f21498fa6c6

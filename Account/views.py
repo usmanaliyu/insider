@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from . forms import UserRegistrationForm, UserUpdateForm
-from listing .models import Listing, Listing_category
+from listing .models import Listing, Category
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator
@@ -34,7 +34,7 @@ def profile(request):
     paginator = Paginator(instance_list, 10)
     page = request.GET.get('page')
     instance = paginator.get_page(page)
-    listing_categories = Listing_category.objects.all()
+    listing_categories = Category.objects.all()
 
     content={
         'instance':instance,
@@ -59,7 +59,7 @@ def profileupdate(request):
         if u_form.is_valid():
             u_form.save()
             messages.success(request, 'Your account is updated!')
-            return redirect('home')
+            return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         context = {

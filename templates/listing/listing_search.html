@@ -76,7 +76,7 @@ Results for "{{ Keywords }}"
                                 <div class=" text-center">
                                     <h4>
                                         <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
-                                        <small>{{ Listing.segment }}</small>
+                                        <small><a href="{{ Listing.category.get_absolute_url }}"> {{ Listing.category }}</a></small>
                                     </h4>
                                 </div>
                                 <!-- end details -->

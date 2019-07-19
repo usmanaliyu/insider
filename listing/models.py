@@ -13,16 +13,16 @@ from django.utils.text import slugify
 
 
 
-class Listing_category(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=250, blank=True)
     slug = models.SlugField(max_length=250)
 
     class Meta:
         ordering =['name']
-        verbose_name = 'listing_category'
+        verbose_name = 'category'
 
     def get_absolute_url(self):
-        return reverse('category_listing', args=[self.slug])
+        return reverse('business_category_list', args=[self.slug])
 
     def __str__(self):
         return self.name
@@ -32,7 +32,7 @@ class Listing(models.Model):
     logo = models.ImageField(upload_to='listing-logo/', blank=False)
     company_name = models.CharField(max_length=250, blank=False, unique=True)
     slug = models.SlugField(max_length=200,unique=True)
-    segment = models.ForeignKey(Listing_category, on_delete=models.CASCADE,verbose_name='Business category',blank=True)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE, default=1,)
     phone_number = models.IntegerField()
     email = models.EmailField(max_length=100)
 

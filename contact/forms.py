@@ -9,3 +9,7 @@ class ContactForm(forms.ModelForm):
         widgets = {
 
         }
+
+
+class SubscribeForm(forms.Form):
+    email = forms.CharField(label='',widget=forms.EmailInput)

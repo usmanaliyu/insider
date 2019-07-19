@@ -89,7 +89,7 @@
                                 <div class="blog-wrapper clearfix">
                                     <div class="blog-meta list-inline">
                                         <small><a href="#">{{ instance.country}}</a></small> |
-                                        <li ><span>{{ instance.segment }}</span></li>
+                                        <li><a href="{{ instance.category.get_absolute_url }}">{{ instance.category }}</a></li>
                                         <h3>{{ instance.company_name}}</h3>
 
                                     </div><!-- end blog-meta -->

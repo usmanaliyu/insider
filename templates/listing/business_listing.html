@@ -77,7 +77,7 @@ All Businesses
                                 <div class=" text-center">
                                     <h4>
                                         <a href="{% url 'listing_detail' Listing.slug %}" title="">{{ Listing.company_name|truncatechars:25}}</a>
-                                        <small>{{ Listing.segment }}</small>
+                                        <a href="{{ Listing.category.get_absolute_url }}"><small> {{ Listing.category }}</small></a>
                                     </h4>
                                 </div>
                                 <!-- end details -->
