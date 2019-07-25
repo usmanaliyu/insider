@@ -52,7 +52,7 @@ Home
 
                             <div class="blog-desc">
                                 <h4><a href="{% url 'detail' Article.slug %}">{{ Article.title}}</a></h4>
-                                <p>{{ Article.summary }}<a href="{% url 'detail' Article.slug%}">...</a> </p>
+                                <p>{{ Article.summary|truncatechars:250  }}</p>
                             </div><!-- end blog-desc -->
 
                             <div class="post-meta">
@@ -110,7 +110,7 @@ Home
 
 
                                                 <h4><a href="{% url 'detail' Article.slug %}"> {{ Article.title }}</a></h4>
-                                                <p> {{ Article.summary }}<a href="{% url 'detail' Article.slug%}">...</a></p>
+                                                <p> {{ Article.summary|truncatechars:250   }}<a href="{% url 'detail' Article.slug%}">...</a></p>
 
 
                                                 {% if Article.tags %}

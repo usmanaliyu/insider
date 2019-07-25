@@ -36,8 +36,16 @@
                                     <div class="blog-desc-big">
 
                                         <p>{{ instance.title_body1 }}</p>
+
+
+                                        <blockquote class="text-center">
+  {{ instance.summary}}
+</blockquote>
+
+
                                         <p>{{ instance.title_body2 }}</p>
-                                        <p>{{ instance.title_body3 }}</p>
+
+    {% if instance.part1 %}                                    <p>{{ instance.title_body3 }}</p>
 <h4><big>{{ instance.sub1 }}</big></h4>
 <h5><big>{{ instance.sub1_child1 }}</big></h5>
 <p>{{ instance.sub1_child1_body }}</P>
@@ -90,12 +98,13 @@
   {{ instance.blockquote1}}
 </blockquote>
 {% endif %}
+                                        {% endif %}
 
 
 
 
 
-
+{% if instance.part2 %}
 
 <h4><big>{{ instance.sub2 }}</big></h4>
 <h5><big>{{ instance.sub2_child1 }}</big></h5>
@@ -149,12 +158,13 @@
   {{ instance.blockquote2}}
 </blockquote>
 {% endif %}
+                                        {% endif %}
 
 
 
 
 
-
+{% if instance.part3 %}
 <h4><big>{{ instance.sub3 }}</big></h4>
 <h5><big>{{ instance.sub3_child1 }}</big></h5>
 <p>{{ instance.sub3_child1_body }}</P>
@@ -207,9 +217,10 @@
   {{ instance.blockquote3 }}
 </blockquote>
 {% endif %}
+{% endif %}
 
 
-
+{% if instance.part4 %}
 <h4><big>{{ instance.sub4 }}</big></h4>
 <h5><big>{{ instance.sub4_child1 }}</big></h5>
 <p>{{ instance.sub4_child1_body }}</P>
@@ -263,11 +274,11 @@
   {{ instance.blockquote4}}
 </blockquote>
 {% endif %}
+{% endif %}
 
 
 
-
-
+{% if instance.part5 %}
 <h4><big>{{ instance.sub5 }}</big></h4>
 <h5><big>{{ instance.sub5_child1 }}</big></h5>
 <p>{{ instance.sub5_child1_body }}</P>
@@ -318,6 +329,7 @@
   {{ instance.blockquote5}}
 </blockquote>
 {% endif %}
+                                        {% endif %}
 
 
 
@@ -458,23 +470,7 @@
                                 </div><!-- end newsletter -->
                             </div><!-- end widget -->
 
-                            <div class="widget clearfix">
-                                <h3 class="widget-title">Popular Tags</h3>
-                                <div class="tags-widget">
-                                    <ul class="list-inline">
-                                        <li><a href="#">course</a></li>
-                                        <li><a href="#">web design</a></li>
-                                        <li><a href="#">development</a></li>
-                                        <li><a href="#">language</a></li>
-                                        <li><a href="#">teacher</a></li>
-                                        <li><a href="#">speaking</a></li>
-                                        <li><a href="#">material</a></li>
-                                        <li><a href="#">css3</a></li>
-                                        <li><a href="#">html</a></li>
-                                        <li><a href="#">learning</a></li>
-                                    </ul>
-                                </div><!-- end list-widget -->
-                            </div><!-- end widget -->
+
                         </div><!-- end sidebar -->
                     </div><!-- end row -->
                 </div><!-- end boxed -->

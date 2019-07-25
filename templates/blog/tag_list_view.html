@@ -54,7 +54,7 @@
                                             <div class="blog-desc-big">
                                                 <h1></h1> <a href="{% url 'detail' Article.slug %}" class="lead">{{ Article.title}}</a></h1>
                                                     <p>
-                                                    {{ Article.summary }}
+                                                    {{ Article.summary|truncatechars:250   }}
                                                     </p>
                                                 {% if Article.tags %}
                         <div class="widget clearfix">

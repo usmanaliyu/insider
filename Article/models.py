@@ -31,11 +31,12 @@ class Article(models.Model):
     tags = TaggableManager()
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=250, unique=True)
-    summary = models.TextField(max_length=250, blank=True)
+    summary = models.TextField(max_length=1000, blank=True)
     title_body1 = models.TextField(max_length=1000, blank=True)
     title_body2 = models.TextField(max_length=1000, blank=True)
     title_body3 = models.TextField(max_length=1000, blank=True)
 
+    part1=models.CharField(blank=True,max_length=200, choices=(('true','True'),('false','False')))
     sub1 = models.CharField(max_length=200, blank=True)
     sub1_child1 = models.CharField(max_length=500, blank=True)
     sub1_child1_body = models.TextField(max_length=1000, blank=True)
@@ -54,6 +55,7 @@ class Article(models.Model):
     sub1_child5_image = models.ImageField(upload_to='upload', blank=True)
     blockquote1 = models.TextField(max_length=500, blank=True)
 
+    part2 = models.CharField(blank=True,max_length=200, choices=(('true','True'),('false','False')))
     sub2 = models.CharField(max_length=200, blank=True)
     sub2_child1 = models.CharField(max_length=500, blank=True)
     sub2_child1_body = models.TextField(max_length=1000, blank=True)
@@ -72,6 +74,7 @@ class Article(models.Model):
     sub2_child5_image = models.ImageField(upload_to='upload', blank=True)
     blockquote2 = models.TextField(max_length=500, blank=True)
 
+    part3 = models.CharField(blank=True,max_length=200, choices=(('true','True'),('false','False')))
     sub3 = models.CharField(max_length=200, blank=True)
     sub3_child1 = models.CharField(max_length=500, blank=True)
     sub3_child1_body = models.TextField(max_length=1000, blank=True)
@@ -90,6 +93,7 @@ class Article(models.Model):
     sub3_child5_image = models.ImageField(upload_to='upload', blank=True)
     blockquote3 = models.TextField(max_length=500, blank=True)
 
+    part4 = models.CharField(blank=True,max_length=200, choices=(('true','True'),('false','False')))
     sub4 = models.CharField(max_length=200, blank=True)
     sub4_child1 = models.CharField(max_length=500, blank=True)
     sub4_child1_body = models.TextField(max_length=1000, blank=True)
@@ -108,6 +112,7 @@ class Article(models.Model):
     sub4_child5_image = models.ImageField(upload_to='upload', blank=True)
     blockquote4 = models.TextField(max_length=500, blank=True)
 
+    part5 = models.CharField(blank=True,max_length=200, choices=(('true','True'),('false','False')))
     sub5 = models.CharField(max_length=200, blank=True)
     sub5_child1 = models.CharField(max_length=500, blank=True)
     sub5_child1_body = models.TextField(max_length=1000, blank=True)
