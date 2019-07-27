@@ -137,3 +137,6 @@ $templates/listing/category_list.html,d/3/d3c2dca2cfe1d387669e9695271b7c4b9a11c
 contact/apps.py,4/7/4774c2fee907e39fe1b1b62143ae2f21498fa6c6
 L
 static/css/bootstrap.min.css,6/0/60d2b7dcd8c182d9d4c4936d505a55421b522dfe
+:
+
+dockerfile,5/5/558c49b604560afd1841f2a7b49e2f60bd1f99b3
