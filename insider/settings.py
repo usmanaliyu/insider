@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +26,7 @@ SECRET_KEY = '@@yjye4@o03$@03(6_tg9n*wm9opcik#2_y@qs-^en(y!lcbe)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://github.com/usmanaliyu/insider.git']
 
 
 # Application definition
@@ -79,7 +80,7 @@ ROOT_URLCONF = 'insider.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/usmanaliyu/Documents/djangoapps/insider/templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -156,9 +157,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,'static'),
+
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 
 REDIS_HOST  = 'localhost'
@@ -180,5 +184,3 @@ EMAIL_PORT = 587
 EMAIL_USER_TLS = True
 
 SITE_ID = 1
-
-
