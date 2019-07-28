@@ -26,7 +26,7 @@ SECRET_KEY = '@@yjye4@o03$@03(6_tg9n*wm9opcik#2_y@qs-^en(y!lcbe)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://github.com/usmanaliyu/insider.git']
+ALLOWED_HOSTS = ['africanstartup.azurewebsites.net']
 
 
 # Application definition
