@@ -1,6 +1,5 @@
 certifi==2019.6.16
 chardet==3.0.4
-psycopg2>=2.7,<3.0
 defusedxml==0.6.0
 Django==2.2.2
 django-allauth==0.39.1
@@ -8,14 +7,13 @@ django-countries==5.3.3
 django-crispy-forms==1.7.2
 django-redis==4.10.0
 django-taggit==1.1.0
-gunicorn==19.9.0
+ggunicorn==19.9.0
 idna==2.8
 oauthlib==3.0.2
 Pillow==6.0.0
 python-memcached==1.59
 python3-openid==3.1.0
 pytz==2019.1
-psycopg2>=2.7,<3.0
 redis==3.2.1
 requests==2.22.0
 requests-oauthlib==1.2.0
